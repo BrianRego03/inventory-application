@@ -1,8 +1,8 @@
 const { fetchAllMovies } = require("../db/queries");
 
 const fetchIndexMovies=async(req,res)=>{
-    await fetchAllMovies();
-    res.render("index");
+    const movies=await fetchAllMovies();
+    res.render("index",{movies:movies});
 }
 
 module.exports={fetchIndexMovies};

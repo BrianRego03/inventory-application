@@ -6,7 +6,11 @@
     <title>MovieDB</title>
 </head>
 <body>
-    <div>MovieDB</div>
+    <h1>MovieDB</h1>
+    <% for(i=0;i< movies.length;i++){ %>
+        <div><a href=#><%= movies[i].id  +") " + movies[i].name +" (" + movies[i].release_year + ")" %></a></div>
+    <% } %>    
+
     
     
 </body>
