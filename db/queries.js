@@ -6,4 +6,9 @@ async function fetchAllMovies() {
     return rows;
 }
 
-module.exports={fetchAllMovies};
+async function fetchMovieByIdentity(id) {
+    const {rows}=await pool.query("SELECT * FROM movies WHERE movies.id=$1",[id])
+    return rows;
+}
+
+module.exports={fetchAllMovies,fetchMovieByIdentity};
