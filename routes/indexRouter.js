@@ -5,3 +5,5 @@ indexRouter= Router();
 const {fetchIndexMovies}=require("../controllers/indexController");
 
 indexRouter.get("/",fetchIndexMovies);
+
+module.exports=indexRouter;
