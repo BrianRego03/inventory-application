@@ -6,4 +6,4 @@ const {fetchMovieById}=require("../controllers/movieController");
 
 movieRouter.get("/:movieID",fetchMovieById);
 
-module.exports=indexRouter;
+module.exports=movieRouter;
