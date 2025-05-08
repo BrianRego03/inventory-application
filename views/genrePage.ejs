@@ -7,14 +7,25 @@
 </head>
 <body>
     <div><%= movies.genrename %></div>
-    <div>Movies in this genre: 
+    <div>Movies in this genre: </div>
+    <div style="display: flex; justify-content: space-evenly;flex-wrap: wrap;">
         <% for(let i=0;i< movies.genremovies.length; i++){ %>
-            <a href="/movies/<%= movies.genremovies[i].movie_id %>">
-                <%= movies.genremovies[i].movie_name %>
-            </a> 
-            <%= i< movies.genremovies.length-1?",":"" %>
+            <div style="width: 210px;text-align: center;">
+                <img style="max-height: 200px;" src=<%= movies.genremovies[i].movie_url %>>
+                <div>
+                    <a href="/movies/<%= movies.genremovies[i].movie_id %>">
+                        <%= movies.genremovies[i].movie_name %>
+                    </a> 
+
+                </div>
+            </div>
+            
+            <!-- <%= i< movies.genremovies.length-1?",":"" %> -->
         <% } %>    
+        
     </div>
+        
+    
     
     
 </body>

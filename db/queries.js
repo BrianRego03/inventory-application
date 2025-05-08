@@ -52,7 +52,7 @@ async function fetchGenreMovies(id){
                        LEFT JOIN(
                             SELECT mg.genre_id,
                                     ARRAY_AGG(
-                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name)
+                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name,'movie_url',m.url)
                                     ) AS genremovies
                             FROM movie_genres mg
                             LEFT JOIN movies m ON mg.movie_id=m.id
