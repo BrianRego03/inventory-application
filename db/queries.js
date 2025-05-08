@@ -25,7 +25,7 @@ async function fetchMovieByIdentity(id) {
                       ) g ON m.id=g.movie_id
                       LEFT JOIN (
                             SELECT ma.movie_id,
-                                    ARRAY_AGG(JSON_BUILD_OBJECT('aname',p.name,'aid',p.id)
+                                    ARRAY_AGG(JSON_BUILD_OBJECT('aname',p.name,'aid',p.id,'aurl',p.url)
                                     ) AS actors
                             FROM movie_actors ma
                             LEFT JOIN people p ON ma.people_id=p.id
@@ -33,7 +33,7 @@ async function fetchMovieByIdentity(id) {
                       ) a ON m.id=a.movie_id
                       LEFT JOIN (
                             SELECT md.movie_id,
-                                    ARRAY_AGG(JSON_BUILD_OBJECT('dname',p.name,'did',p.id)
+                                    ARRAY_AGG(JSON_BUILD_OBJECT('dname',p.name,'did',p.id,'durl',p.url)
                                     ) AS directors                                    
                             FROM movie_directors md
                             LEFT JOIN people p ON md.people_id=p.id
@@ -74,7 +74,7 @@ async function fetchActorMovies(id){
                        LEFT JOIN(
                             SELECT ma.people_id,
                                     ARRAY_AGG(
-                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name)
+                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name,'movie_url',m.url)
                                     ) AS actormovies
                             FROM movie_actors ma
                             LEFT JOIN movies m ON ma.movie_id=m.id
@@ -83,7 +83,7 @@ async function fetchActorMovies(id){
                         LEFT JOIN(
                             SELECT md.people_id,
                                     ARRAY_AGG(
-                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name)
+                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name,'movie_url',m.url)
                                     ) as directormovies
                             FROM movie_directors md
                             LEFT JOIN movies m ON md.movie_id=m.id

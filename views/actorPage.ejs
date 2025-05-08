@@ -10,23 +10,46 @@
     <div><%= movies.actorname %></div>
     <% if(movies.directormovies.length>0){ %>
         <div>Director of:
-            <% for(let i=0;i< movies.directormovies.length; i++){ %>
-                <a href="/movies/<%= movies.directormovies[i].movie_id %>">
-                    <%= movies.directormovies[i].movie_name %>
-                </a>
-                <%= i< movies.directormovies.length-1?",":"" %>
-                    <% } %>
+            <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                <% for(let i=0;i< movies.directormovies.length; i++){ %>
+                    <div style="width: 210px;text-align: center;">
+                        <div>
+                            <img style="max-height: 200px;" 
+                            src=<%= movies.directormovies[i].movie_url %>>
+                        </div>
+                        <a href="/movies/<%= movies.directormovies[i].movie_id %>">
+                            <%= movies.directormovies[i].movie_name %>
+                        </a>
+
+                    </div>
+
+
+                        <% } %>
+
+            </div>
+
+
         </div>
     <% } %>
     
     <% if(movies.actormovies.length>0){ %>   
         <div>Starred in: 
-            <% for(let i=0;i< movies.actormovies.length; i++){ %>
-                <a href="/movies/<%= movies.actormovies[i].movie_id %>">
-                    <%= movies.actormovies[i].movie_name %>
-                </a> 
-                <%= i< movies.actormovies.length-1?",":"" %>
-            <% } %>    
+            <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                <% for(let i=0;i< movies.actormovies.length; i++){ %>
+                    <div style="width: 210px;text-align: center;">
+                        <div>
+                            <img style="max-height: 200px;" src=<%=movies.actormovies[i].movie_url %>>
+                        </div>
+                        <a href="/movies/<%= movies.actormovies[i].movie_id %>">
+                            <%= movies.actormovies[i].movie_name %>
+                        </a>
+                    </div>
+                <% } %>
+                    
+
+            </div>
+
+ 
         </div>
     <% } %>
     
