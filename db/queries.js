@@ -10,27 +10,27 @@ async function fetchMovieByIdentity(id) {
     // const {rows}=await pool.query("SELECT * FROM movies WHERE movies.id=$1",[id]);
     const movieQuery=`SELECT m.name AS moviename,
                             m.release_year AS year,
-                            COALESCE(g.genres,'No genres available') AS genres,
-                            COALESCE(a.actors,'No actors found') AS actors,
-                            COALESCE(d.directors,'No directors found') AS directors
+                            COALESCE(g.genres,'{}'::TEXT[]) AS genres,
+                            COALESCE(a.actors,'{}'::TEXT[]) AS actors,
+                            COALESCE(d.directors,'{}'::TEXT[]) AS directors
                       FROM movies m
                       LEFT JOIN (
                             SELECT mg.movie_id,
-                                    STRING_AGG(g.name,',') AS genres
+                                    ARRAY_AGG(g.name) AS genres
                             FROM movie_genres mg
                             LEFT JOIN genres g ON mg.genre_id=g.id
                             GROUP BY mg.movie_id         
                       ) g ON m.id=g.movie_id
                       LEFT JOIN (
                             SELECT ma.movie_id,
-                                    STRING_AGG(p.name,',') AS actors
+                                    ARRAY_AGG(p.name) AS actors
                             FROM movie_actors ma
                             LEFT JOIN people p ON ma.people_id=p.id
                             GROUP BY movie_id        
                       ) a ON m.id=a.movie_id
                       LEFT JOIN (
                             SELECT md.movie_id,
-                                    STRING_AGG(p.name,',') AS directors
+                                    ARRAY_AGG(p.name) AS directors
                             FROM movie_directors md
                             LEFT JOIN people p ON md.people_id=p.id
                             GROUP BY movie_id        
