@@ -18,6 +18,11 @@
             <a href="#"><%= movie.actors[i] %></a> <%= i< movie.actors.length-1?",":"" %>
         <% } %>    
     </div>
+    <div>Genres: 
+        <% for(let i=0;i< movie.genres.length; i++){ %>
+            <a href="#"><%= movie.genres[i] %></a> <%= i< movie.genres.length-1?",":"" %>
+        <% } %>    
+    </div>
     
 </body>
 </html>
