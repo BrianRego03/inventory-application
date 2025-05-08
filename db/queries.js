@@ -12,7 +12,7 @@ async function fetchMovieByIdentity(id) {
                             m.release_year AS year,
                             COALESCE(g.genres,'{}'::JSON[]) AS genres,
                             COALESCE(a.actors,'{}'::JSON[]) AS actors,
-                            COALESCE(d.directors,'{}'::TEXT[]) AS directors
+                            COALESCE(d.directors,'{}'::JSON[]) AS directors
                       FROM movies m
                       LEFT JOIN (
                             SELECT mg.movie_id,
@@ -32,7 +32,8 @@ async function fetchMovieByIdentity(id) {
                       ) a ON m.id=a.movie_id
                       LEFT JOIN (
                             SELECT md.movie_id,
-                                    ARRAY_AGG(p.name) AS directors
+                                    ARRAY_AGG(JSON_BUILD_OBJECT('dname',p.name,'did',p.id)
+                                    ) AS directors                                    
                             FROM movie_directors md
                             LEFT JOIN people p ON md.people_id=p.id
                             GROUP BY movie_id        

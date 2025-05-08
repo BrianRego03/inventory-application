@@ -10,7 +10,10 @@
     <div>Release Year: <%= movie.year %></div>
     <div>Directed by: 
         <% for(let i=0;i< movie.directors.length; i++){ %>
-            <a href="#"><%= movie.directors[i] %></a> <%= i< movie.directors.length-1?",":"" %>
+            <a href="/actors/<%= movie.directors[i].did %>">
+                <%= movie.directors[i].dname %>
+            </a> 
+            <%= i< movie.directors.length-1?",":"" %>
         <% } %>    
     </div>
     <div>Starring: 
