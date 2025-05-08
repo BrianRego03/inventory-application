@@ -41,4 +41,21 @@ async function fetchMovieByIdentity(id) {
     return rows[0];
 }
 
+async function fetchGenreMovies(id){
+    const genreQuery=`SELECT g.name as genrename,
+                            COALESCE(m.genremovies,'{}'::TEXT[])
+                       FROM genres g
+                       LEFT JOIN(
+                            SELECT mg.genre_id,
+                                    ARRAY_AGG(m.name) AS genremovies
+                            FROM movie_genres mg
+                            LEFT JOIN movies m ON mg.movie_id=m.id
+                            GROUP BY genre_id     
+                       ) m ON g.id=m.genre_id
+                        where g.id=$1                       
+                       `
+    const {rows}=await pool.query(genreQuery,[id]);
+    return rows[0];                   
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity};
