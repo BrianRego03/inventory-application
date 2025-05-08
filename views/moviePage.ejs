@@ -15,7 +15,7 @@
     </div>
     <div>Starring: 
         <% for(let i=0;i< movie.actors.length; i++){ %>
-            <a href="#"><%= movie.actors[i] %></a> <%= i< movie.actors.length-1?",":"" %>
+            <a href="/actors/<%= movie.actors[i].aid %>"><%= movie.actors[i].aname %></a> <%= i< movie.actors.length-1?",":"" %>
         <% } %>    
     </div>
     <div>Genres: 

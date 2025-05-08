@@ -11,7 +11,7 @@ async function fetchMovieByIdentity(id) {
     const movieQuery=`SELECT m.name AS moviename,
                             m.release_year AS year,
                             COALESCE(g.genres,'{}'::JSON[]) AS genres,
-                            COALESCE(a.actors,'{}'::TEXT[]) AS actors,
+                            COALESCE(a.actors,'{}'::JSON[]) AS actors,
                             COALESCE(d.directors,'{}'::TEXT[]) AS directors
                       FROM movies m
                       LEFT JOIN (
@@ -24,7 +24,8 @@ async function fetchMovieByIdentity(id) {
                       ) g ON m.id=g.movie_id
                       LEFT JOIN (
                             SELECT ma.movie_id,
-                                    ARRAY_AGG(p.name) AS actors
+                                    ARRAY_AGG(JSON_BUILD_OBJECT('aname',p.name,'aid',p.id)
+                                    ) AS actors
                             FROM movie_actors ma
                             LEFT JOIN people p ON ma.people_id=p.id
                             GROUP BY movie_id        
