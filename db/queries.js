@@ -10,13 +10,14 @@ async function fetchMovieByIdentity(id) {
     // const {rows}=await pool.query("SELECT * FROM movies WHERE movies.id=$1",[id]);
     const movieQuery=`SELECT m.name AS moviename,
                             m.release_year AS year,
-                            COALESCE(g.genres,'{}'::TEXT[]) AS genres,
+                            COALESCE(g.genres,'{}'::JSON[]) AS genres,
                             COALESCE(a.actors,'{}'::TEXT[]) AS actors,
                             COALESCE(d.directors,'{}'::TEXT[]) AS directors
                       FROM movies m
                       LEFT JOIN (
                             SELECT mg.movie_id,
-                                    ARRAY_AGG(g.name) AS genres
+                                    ARRAY_AGG(JSON_BUILD_OBJECT('gname',g.name,'gid',g.id)
+                                    ) AS genres
                             FROM movie_genres mg
                             LEFT JOIN genres g ON mg.genre_id=g.id
                             GROUP BY mg.movie_id         
