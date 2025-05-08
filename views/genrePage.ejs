@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><%= movie.genrename %></div>
+    <div>Movies in this genre: 
+        <% for(let i=0;i< movie.genremovies.length; i++){ %>
+            <a href="/movies/<%= movie.genremovies[i].movie_id %>">
+                <%= movie.genremovies[i].movie_name %>
+            </a> 
+            <%= i< movie.genremovies.length-1?",":"" %>
+        <% } %>    
+    </div>
+    <div>Starring: 
+        <% for(let i=0;i< movie.actors.length; i++){ %>
+            <a href="#"><%= movie.actors[i] %></a> <%= i< movie.actors.length-1?",":"" %>
+        <% } %>    
+    </div>
+    <div>Genres: 
+        <% for(let i=0;i< movie.genres.length; i++){ %>
+            <a href="#"><%= movie.genres[i] %></a> <%= i< movie.genres.length-1?",":"" %>
+        <% } %>    
+    </div>
+    
+</body>
+</html>

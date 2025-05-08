@@ -43,11 +43,13 @@ async function fetchMovieByIdentity(id) {
 
 async function fetchGenreMovies(id){
     const genreQuery=`SELECT g.name as genrename,
-                            COALESCE(m.genremovies,'{}'::TEXT[])
+                            COALESCE(m.genremovies,'{}'::JSON[]) AS genremovies
                        FROM genres g
                        LEFT JOIN(
                             SELECT mg.genre_id,
-                                    ARRAY_AGG(m.name) AS genremovies
+                                    ARRAY_AGG(
+                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name)
+                                    ) AS genremovies
                             FROM movie_genres mg
                             LEFT JOIN movies m ON mg.movie_id=m.id
                             GROUP BY genre_id     
