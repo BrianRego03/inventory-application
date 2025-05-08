@@ -7,14 +7,28 @@
 </head>
 <body>
     <div><%= movies.actorname %></div>
-    <div>Starred in: 
-        <% for(let i=0;i< movies.actormovies.length; i++){ %>
-            <a href="/movies/<%= movies.actormovies[i].movie_id %>">
-                <%= movies.actormovies[i].movie_name %>
-            </a> 
-            <%= i< movies.actormovies.length-1?",":"" %>
-        <% } %>    
-    </div>
+    <% if(movies.directormovies.length>0){ %>
+        <div>Director of:
+            <% for(let i=0;i< movies.directormovies.length; i++){ %>
+                <a href="/movies/<%= movies.directormovies[i].movie_id %>">
+                    <%= movies.directormovies[i].movie_name %>
+                </a>
+                <%= i< movies.directormovies.length-1?",":"" %>
+                    <% } %>
+        </div>
+    <% } %>
+    
+    <% if(movies.actormovies.length>0){ %>   
+        <div>Starred in: 
+            <% for(let i=0;i< movies.actormovies.length; i++){ %>
+                <a href="/movies/<%= movies.actormovies[i].movie_id %>">
+                    <%= movies.actormovies[i].movie_name %>
+                </a> 
+                <%= i< movies.actormovies.length-1?",":"" %>
+            <% } %>    
+        </div>
+    <% } %>
+    
     
     
 </body>
