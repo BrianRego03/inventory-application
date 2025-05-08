@@ -66,6 +66,7 @@ async function fetchGenreMovies(id){
 
 async function fetchActorMovies(id){
     const actorQuery=`SELECT p.name as actorname,
+                            p.url as actorurl,
                             COALESCE(a.actormovies,'{}'::JSON[]) AS actormovies,
                             COALESCE(d.directormovies,'{}'::JSON[]) AS directormovies
 

@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS movies (
 );
 CREATE TABLE IF NOT EXISTS people (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    name TEXT NOT NULL
+    name TEXT NOT NULL,
+    url TEXT CHECK (url ~* '^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$')
+
 );
 CREATE TABLE IF NOT EXISTS genres (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -77,32 +79,32 @@ VALUES
 `;
 
 const insertPeople = `
-INSERT INTO people (name)
+INSERT INTO people (name,url)
 VALUES
-('Christopher Nolan'),
-('Matthew McConaughey'),
-('Anne Hathaway'),
-('Matt Damon'),
-('Michael Caine'),
-('Jessica Chastain'),
-('Robert Eggers'),
-('Lily-Rose Depp'),
-('Nicholas Hoult'),
-('James Gunn'),
-('David Corenswet'),
-('Rachel Brosnahan'),
-('Nathan Fillion'),
-('Christian Bale'),
-('Tom Hardy'),
-('Clint Eastwood'),
-('Toni Collette'),
-('Zoey Deutch'),
-('Martin Scorsese'),
-('Ray Liotta'),
-('Robert De Niro'),
-('Joe Pesci'),
-('Eli Wallach'),
-('Lee Van Cleef');
+('Christopher Nolan','https://image.tmdb.org/t/p/w342/xuAIuYSmsUzKlUMBFGVZaWsY3DZ.jpg'),
+('Matthew McConaughey','https://image.tmdb.org/t/p/w342/lCySuYjhXix3FzQdS4oceDDrXKI.jpg'),
+('Anne Hathaway','https://image.tmdb.org/t/p/w342/s6tflSD20MGz04ZR2R1lZvhmC4Y.jpg'),
+('Matt Damon','https://image.tmdb.org/t/p/w342/4KAxONjmVq7qcItdXo38SYtnpul.jpg'),
+('Michael Caine','https://image.tmdb.org/t/p/w342/bVZRMlpjTAO2pJK6v90buFgVbSW.jpg'),
+('Jessica Chastain','https://image.tmdb.org/t/p/w342/xRvRzxiiHhgUErl0yf9w8WariRE.jpg'),
+('Robert Eggers','https://image.tmdb.org/t/p/w342/xdN30BowN6uLjeNXYWWZINeht12.jpg'),
+('Lily-Rose Depp','https://image.tmdb.org/t/p/w342/cvBXqmj3waqMUQ7yhQljAUhAivX.jpg'),
+('Nicholas Hoult','https://image.tmdb.org/t/p/w342/laeAYQVBV9U3DkJ1B4Cn1XhpT8P.jpg'),
+('James Gunn','https://image.tmdb.org/t/p/w342/2kFzvqCGeYBrgbuuvvyGE75d9gM.jpg'),
+('David Corenswet','https://image.tmdb.org/t/p/w342/kPxoeGBVRb4goUVmi4Qpg0lLnYW.jpg'),
+('Rachel Brosnahan','https://image.tmdb.org/t/p/w342/6kFrUqfHy3PYNxKtTWAu8F54xB8.jpg'),
+('Nathan Fillion','https://image.tmdb.org/t/p/w342/aW6vCxkUZtwb6iH2Wf88Uq0XNVv.jpg'),
+('Christian Bale','https://image.tmdb.org/t/p/w342/7Pxez9J8fuPd2Mn9kex13YALrCQ.jpg'),
+('Tom Hardy','https://image.tmdb.org/t/p/w342/d81K0RH8UX7tZj49tZaQhZ9ewH.jpg'),
+('Clint Eastwood','https://image.tmdb.org/t/p/w342/8TwdCfeOZH7ucRlfLZ6wObxa7cO.jpg'),
+('Toni Collette','https://image.tmdb.org/t/p/w342/lzXRh16qe4HHeBN6tMyw0DHvaMn.jpg'),
+('Zoey Deutch','https://image.tmdb.org/t/p/w342/csmSAm3vpJj9lB5vb5fTbRqOw9C.jpg'),
+('Martin Scorsese','https://image.tmdb.org/t/p/w342/9U9Y5GQuWX3EZy39B8nkk4NY01S.jpg'),
+('Ray Liotta','https://image.tmdb.org/t/p/w342/jdwGJbJNSRQiG2kB5MJxiu2clCQ.jpg'),
+('Robert De Niro','https://image.tmdb.org/t/p/w342/cT8htcckIuyI1Lqwt1CvD02ynTh.jpg'),
+('Joe Pesci','https://image.tmdb.org/t/p/w342/1WHLXwT0TDZDWFVRcFve1B0EjNK.jpg'),
+('Eli Wallach','https://image.tmdb.org/t/p/w342/s452wxFLaOwAIs6juD0rrvxaFxL.jpg'),
+('Lee Van Cleef','https://image.tmdb.org/t/p/w342/yQc5wjNCdRZzPp5E2wRPRYsEq9a.jpg');
 `;
 
 
