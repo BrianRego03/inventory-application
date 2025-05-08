@@ -10,6 +10,7 @@ async function fetchMovieByIdentity(id) {
     // const {rows}=await pool.query("SELECT * FROM movies WHERE movies.id=$1",[id]);
     const movieQuery=`SELECT m.name AS moviename,
                             m.release_year AS year,
+                            m.url AS url,
                             COALESCE(g.genres,'{}'::JSON[]) AS genres,
                             COALESCE(a.actors,'{}'::JSON[]) AS actors,
                             COALESCE(d.directors,'{}'::JSON[]) AS directors

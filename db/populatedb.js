@@ -14,7 +14,8 @@ const createTables=`
 CREATE TABLE IF NOT EXISTS movies (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name TEXT NOT NULL,
-    release_year INTEGER NOT NULL
+    release_year INTEGER NOT NULL,
+    url TEXT CHECK (url ~* '^(https?:\/\/)?([a-z0-9\-]+\.)+[a-z]{2,6}(:[0-9]{1,5})?(\/.*)?$')
 );
 CREATE TABLE IF NOT EXISTS people (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -49,15 +50,15 @@ CREATE TABLE IF NOT EXISTS movie_actors (
 `;
 
 const insertMovies=`
-INSERT INTO movies (name,release_year)
+INSERT INTO movies (name,release_year,url)
 VALUES
-('Interstellar',2014),
-('Nosferatu',2025),
-('Superman',2025),
-('The Dark Knight Rises',2012),
-('Juror #2',2024 ),
-('Goodfellas',1990),
-('The Good, the Bad & the Ugly',1966);
+('Interstellar',2014,'https://a.ltrbxd.com/resized/film-poster/1/1/7/6/2/1/117621-interstellar-0-1000-0-1500-crop.jpg?v=7ad89e6666'),
+('Nosferatu',2025,'https://a.ltrbxd.com/resized/film-poster/3/5/9/5/0/5/359505-nosferatu-2024-0-1000-0-1500-crop.jpg?v=a12d4ad648'),
+('Superman',2025,'https://a.ltrbxd.com/resized/film-poster/9/5/7/0/5/0/957050-superman-2025-0-1000-0-1500-crop.jpg?v=54e41a55ff'),
+('The Dark Knight Rises',2012,'https://a.ltrbxd.com/resized/film-poster/1/6/5/5/0/16550-the-dark-knight-rises-0-1000-0-1500-crop.jpg?v=a7db2d4314'),
+('Juror #2',2024,'https://a.ltrbxd.com/resized/film-poster/9/9/7/7/2/2/997722-juror-2-0-1000-0-1500-crop.jpg?v=14601fa694'),
+('Goodfellas',1990,'https://a.ltrbxd.com/resized/film-poster/5/1/3/8/3/51383-goodfellas-0-1000-0-1500-crop.jpg?v=c6c265f228'),
+('The Good, the Bad & the Ugly',1966,'https://a.ltrbxd.com/resized/film-poster/5/1/6/6/6/51666-the-good-the-bad-and-the-ugly-0-1000-0-1500-crop.jpg?v=9474a84e63');
 `;
 
 const insertGenres = `

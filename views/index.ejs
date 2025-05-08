@@ -7,9 +7,21 @@
 </head>
 <body>
     <h1>MovieDB</h1>
-    <% for(i=0;i< movies.length;i++){ %>
-        <div><a href="/movies/<%= movies[i].id %>"><%= movies[i].id  +") " + movies[i].name +" (" + movies[i].release_year + ")" %></a></div>
-    <% } %>    
+    <div style="display: flex; justify-content: space-evenly;flex-wrap: wrap;">
+        <% for(i=0;i< movies.length;i++){ %>
+            <div style="width: 210px;text-align: center;">
+                <img style="max-height: 200px;" src=<%= movies[i].url %>>
+                <div>
+                    <a href="/movies/<%= movies[i].id %>">
+                        <%= movies[i].name +" (" + movies[i].release_year + ")" %>
+                    </a>
+                </div>
+                
+            </div>
+        <% } %>  
+
+    </div>
+  
 
     
     
