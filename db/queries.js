@@ -64,7 +64,9 @@ async function fetchGenreMovies(id){
 
 async function fetchActorMovies(id){
     const actorQuery=`SELECT p.name as actorname,
-                            COALESCE(m.actormovies,'{}'::JSON[]) AS actormovies
+                            COALESCE(a.actormovies,'{}'::JSON[]) AS actormovies,
+                            COALESCE(d.directormovies,'{}'::JSON[]) AS directormovies
+
                        FROM people p
                        LEFT JOIN(
                             SELECT ma.people_id,
@@ -74,8 +76,18 @@ async function fetchActorMovies(id){
                             FROM movie_actors ma
                             LEFT JOIN movies m ON ma.movie_id=m.id
                             GROUP BY people_id     
-                       ) m ON p.id=m.people_id
-                        where p.id=$1                       
+                       ) a ON p.id=a.people_id
+                        LEFT JOIN(
+                            SELECT md.people_id,
+                                    ARRAY_AGG(
+                                        JSON_BUILD_OBJECT('movie_id',m.id,'movie_name',m.name)
+                                    ) as directormovies
+                            FROM movie_directors md
+                            LEFT JOIN movies m ON md.movie_id=m.id
+                            GROUP BY people_id        
+                        ) d ON p.id=d.people_id
+                        
+                        WHERE p.id=$1                       
                        `
     const {rows}=await pool.query(actorQuery,[id]);
     return rows[0];                   
