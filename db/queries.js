@@ -58,4 +58,4 @@ async function fetchGenreMovies(id){
     return rows[0];                   
 }
 
-module.exports={fetchAllMovies,fetchMovieByIdentity};
+module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies};
