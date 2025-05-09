@@ -120,5 +120,19 @@ async function deleteActorByIdentity(id){
 
 }
 
+async function fetchAllPeople() {
+    const {rows}=await pool.query("SELECT * FROM people");
+    console.log(rows);
+    return rows;
+}
+
+async function fetchAllGenres() {
+    const {rows}=await pool.query("SELECT * FROM genres");
+    console.log(rows);
+    return rows;
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
-    deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity};
+    deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
+    fetchAllGenres,fetchAllPeople
+};
