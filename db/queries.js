@@ -11,6 +11,7 @@ async function fetchMovieByIdentity(id) {
     const movieQuery=`SELECT m.name AS moviename,
                             m.release_year AS year,
                             m.url AS url,
+                            m.id AS id,
                             COALESCE(g.genres,'{}'::JSON[]) AS genres,
                             COALESCE(a.actors,'{}'::JSON[]) AS actors,
                             COALESCE(d.directors,'{}'::JSON[]) AS directors

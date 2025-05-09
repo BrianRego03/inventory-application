@@ -49,6 +49,9 @@
             <a href="/genres/<%= movie.genres[i].gid %>"><%= movie.genres[i].gname %></a> <%= i< movie.genres.length-1?",":"" %>
         <% } %>    
     </div>
+    <div>
+        <button onclick="window.location.href='/movies/<%= movie.id %>/delete/'">Delete movie</button>
+    </div>
     
 </body>
 </html>
