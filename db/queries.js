@@ -69,6 +69,7 @@ async function fetchGenreMovies(id){
 async function fetchActorMovies(id){
     const actorQuery=`SELECT p.name as actorname,
                             p.url as actorurl,
+                            p.id as id,
                             COALESCE(a.actormovies,'{}'::JSON[]) AS actormovies,
                             COALESCE(d.directormovies,'{}'::JSON[]) AS directormovies
 
@@ -112,5 +113,12 @@ async function deleteGenreByIdentity(id){
 
 }
 
+async function deleteActorByIdentity(id){
+    const deleteActor=`DELETE FROM people WHERE people.id=$1`
+    const {rows}=await pool.query(deleteActor,[id]);
+    return;
+
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
-    deleteMovieByIdentity,deleteGenreByIdentity};
+    deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity};

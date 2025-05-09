@@ -1,4 +1,4 @@
-const {fetchActorMovies} = require("../db/queries");
+const {fetchActorMovies,deleteActorByIdentity} = require("../db/queries");
 
 const fetchActor=async(req,res)=>{
     const {actorID}=req.params;
@@ -7,4 +7,10 @@ const fetchActor=async(req,res)=>{
     res.render("actorPage",{movies:movies});
 }
 
-module.exports={fetchActor};
+const deleteActorById=async(req,res)=>{
+    const {actorID}=req.params;
+    await deleteActorByIdentity(actorID);
+    res.redirect("/");
+}
+
+module.exports={fetchActor,deleteActorById};
