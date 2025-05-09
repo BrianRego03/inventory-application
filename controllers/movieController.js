@@ -1,4 +1,4 @@
-const {fetchMovieByIdentity}=require("../db/queries");
+const {fetchMovieByIdentity,deleteMovieByIdentity}=require("../db/queries");
 
 const fetchMovieById=async(req,res)=>{
     const {movieID}=req.params;
@@ -7,4 +7,10 @@ const fetchMovieById=async(req,res)=>{
     res.render("moviePage",{movie:movieObj});
 }
 
-module.exports={fetchMovieById};
+const deleteMovieById=async(req,res)=>{
+    const {movieID}=req.params;
+    await deleteMovieByIdentity(movieID);
+    res.redirect("/");
+}
+
+module.exports={fetchMovieById,deleteMovieById};

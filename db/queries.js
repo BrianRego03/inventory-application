@@ -97,4 +97,12 @@ async function fetchActorMovies(id){
     return rows[0];                   
 }
 
-module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies};
+async function deleteMovieByIdentity(id){
+    const deleteMovie=`DELETE FROM movies WHERE movies.id=$1`
+    const {rows}=await pool.query(deleteMovie,[id]);
+    return;
+
+}
+
+module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
+    deleteMovieByIdentity};
