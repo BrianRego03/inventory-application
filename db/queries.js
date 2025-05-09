@@ -48,6 +48,7 @@ async function fetchMovieByIdentity(id) {
 
 async function fetchGenreMovies(id){
     const genreQuery=`SELECT g.name as genrename,
+                            g.id as id,
                             COALESCE(m.genremovies,'{}'::JSON[]) AS genremovies
                        FROM genres g
                        LEFT JOIN(
@@ -104,5 +105,12 @@ async function deleteMovieByIdentity(id){
 
 }
 
+async function deleteGenreByIdentity(id){
+    const deleteGenre=`DELETE FROM genres WHERE genres.id=$1`
+    const {rows}=await pool.query(deleteGenre,[id]);
+    return;
+
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
-    deleteMovieByIdentity};
+    deleteMovieByIdentity,deleteGenreByIdentity};
