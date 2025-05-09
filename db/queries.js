@@ -132,7 +132,39 @@ async function fetchAllGenres() {
     return rows;
 }
 
+async function createMovieInDB(moviename,movieurl,movieyear,directorID,actorID,genreID) {
+    if (moviename && movieurl){
+            const movieCreate=`INSERT INTO movies (name,url,release_year)
+                        VALUES($1,$2,$3)
+                        RETURNING id`;
+            const {rows}=await pool.query(movieCreate,[moviename,movieurl,movieyear]);
+            movieid=rows[0].id;
+            if(directorID){
+                const movieCreateDirector=`INSERT INTO movie_directors(movie_id,people_id)
+                                            VALUES($1,$2)`;
+                await pool.query(movieCreateDirector,[movieid,directorID]);                           
+            }
+            if(actorID){
+                const movieCreateActor=`INSERT INTO movie_actors(movie_id,people_id)
+                                            VALUES($1,$2)`;
+                await pool.query(movieCreateActor,[movieid,actorID]);                           
+            }
+            if(genreID){
+                const movieCreateGenres=`INSERT INTO movie_genres(movie_id,genre_id)
+                                            VALUES($1,$2)`;
+                await pool.query(movieCreateGenres,[movieid,genreID]);                           
+            }
+            
+            return movieid;
+    }
+    return;
+                 
+
+    
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
     deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
-    fetchAllGenres,fetchAllPeople
+    fetchAllGenres,fetchAllPeople,
+    createMovieInDB
 };

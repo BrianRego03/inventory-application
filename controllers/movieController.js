@@ -1,4 +1,4 @@
-const {fetchMovieByIdentity,deleteMovieByIdentity}=require("../db/queries");
+const {fetchMovieByIdentity,deleteMovieByIdentity,createMovieInDB}=require("../db/queries");
 
 const fetchMovieById=async(req,res)=>{
     const {movieID}=req.params;
@@ -13,4 +13,16 @@ const deleteMovieById=async(req,res)=>{
     res.redirect("/");
 }
 
-module.exports={fetchMovieById,deleteMovieById};
+const createMovie=async(req,res)=>{
+    console.log(req.body);
+    const name= req.body.creatMovie;
+    const url=req.body.createMovieUrl;
+    const year=req.body.createMovieYear;
+    const director=req.body.createMovieDirector;
+    const actor=req.body.createMovieActor;
+    const genre=req.body.createMovieGenre;
+    const movieID=await createMovieInDB(name,url,year,director,actor,genre);
+    res.redirect(`/movies/${movieID}`);
+
+}
+module.exports={fetchMovieById,deleteMovieById,createMovie};
