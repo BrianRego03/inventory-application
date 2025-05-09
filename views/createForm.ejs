@@ -1,0 +1,38 @@
+<div id="formContainer">
+    
+    <form id="movieForm">
+        <legend>Add Movie</legend>
+        <div>
+            <label for="creatMovie">Movie name:</label>
+            <input type="text" id="creatMovie" name="creatMovie">
+        
+        </div>
+        <div>
+            <label for="createMovieUrl">Poster URL:</label>
+            <input type="url" id="createMovieUrl" name="createMovieUrl">
+        
+        </div>
+        <div>
+            <label for="createMovieDirector">Select director</label>
+            <select id="createMovieDirector" name="createMovieDirector">
+                <option value="" disabled selected>Select a Director</option>
+                <option value="1">a</option>
+                <option value="2">b</option>
+                <option value="3">c</option>
+            </select>
+        </div>
+        <div>
+            <label for="createMovieActor">Select director</label>
+            <select id="createMovieActor" name="createMovieActor">
+                <option value="" disabled selected>Select a Actor</option>
+                <option value="1">a</option>
+                <option value="2">b</option>
+                <option value="3">c</option>
+            </select>
+        </div>
+        <button type="submit">Submit Movie</button>
+        <button onclick="closeCreateMovie()" type="button">Cancel</button>
+
+        
+    </form>
+</div>
