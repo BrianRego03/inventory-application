@@ -212,7 +212,7 @@ async function createPersonInDB(personname,personurl,directedID,actedID) {
             personid=rows[0].id;
             if(directedID){
                 for (let i = 0; i < directedID.length; i++) {
-                    const personCreateDirected = `INSERT INTO movie_directors(movie_id,person_id)
+                    const personCreateDirected = `INSERT INTO movie_directors(movie_id,people_id)
                                             VALUES($1,$2)`;
                     await pool.query(personCreateDirected, [directedID[i], personid]);
 
@@ -221,7 +221,7 @@ async function createPersonInDB(personname,personurl,directedID,actedID) {
             }
             if (actedID) {
                 for (let i = 0; i < actedID.length; i++) {
-                    const personCreateActed = `INSERT INTO movie_actors(movie_id,person_id)
+                    const personCreateActed = `INSERT INTO movie_actors(movie_id,people_id)
                                                 VALUES($1,$2)`;
                     await pool.query(personCreateActed, [actedID[i], personid]);
 

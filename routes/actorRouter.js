@@ -6,7 +6,7 @@ const {fetchActor,deleteActorById,createActor} = require("../controllers/actorCo
 
 actorRouter.get("/:actorID",fetchActor);
 actorRouter.get("/:actorID/delete",deleteActorById);
-actorRouter.get("/create",createActor);
+actorRouter.post("/create",createActor);
 
 
 module.exports=actorRouter;

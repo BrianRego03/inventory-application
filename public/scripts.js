@@ -171,6 +171,15 @@ const addMovieToGenre=(movieID)=>{
 
 }
 
+
+const displayPersonForm=()=>{
+    document.getElementById("personFormContainer").style.display="flex";
+}
+
+const closeCreatePerson=()=>{
+    document.getElementById("personFormContainer").style.display="none";
+}
+
 let actorMovieIDArray=[];
 const addMovieToActor=(movieID)=>{
     if(actorMovieIDArray.find(movie=>movie===movieID)){
