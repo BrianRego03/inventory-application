@@ -15,7 +15,7 @@ const deleteMovieById=async(req,res)=>{
 
 const createMovie=async(req,res)=>{
     console.log(req.body);
-    const name= req.body.creatMovie;
+    const name= req.body.createMovie;
     const url=req.body.createMovieUrl;
     const year=req.body.createMovieYear;
     const director=req.body.movieDirector;
