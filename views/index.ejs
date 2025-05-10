@@ -10,6 +10,9 @@
 <body>
     <h1>MovieDB</h1>
     <button type="button" onclick="displayForm()">Add movie</button>
+    <button type="button" onclick="displayGenreForm()">Add genre</button>
+    <button type="button" onclick="displayPersonForm()">Add actor/director</button>
+
     <%- include("movieDisplay",{movies:movies}) %>
     <%- include("createForm",{people:people,genres:genres}) %>
 
