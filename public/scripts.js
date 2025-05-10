@@ -123,3 +123,12 @@ const addGenre=(genreID)=>{
     selectedGenre.appendChild(genreDiv);
 
 }
+
+
+const displayGenreForm=()=>{
+    document.getElementById("genreFormContainer").style.display="flex";
+}
+
+const closeCreateGenre=()=>{
+    document.getElementById("genreFormContainer").style.display="none";
+}
