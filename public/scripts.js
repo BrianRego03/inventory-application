@@ -132,3 +132,41 @@ const displayGenreForm=()=>{
 const closeCreateGenre=()=>{
     document.getElementById("genreFormContainer").style.display="none";
 }
+
+let genreMovieIDArray=[];
+const addMovieToGenre=(movieID)=>{
+    if(genreMovieIDArray.find(movie=>movie===movieID)){
+        return;
+    }
+    genreMovieIDArray.push(movieID);
+    
+    const movieSelector=document.getElementById("createGenreMovie");
+    const movies=JSON.parse(movieSelector.getAttribute("data-movie"));
+    const movieName=movies.find(movie=>movie.id===(+movieID)).name;
+    let movieDiv=document.createElement("div");
+
+    let displayMovieDiv=document.createElement("div");
+    let movieNameDiv=document.createElement("div");
+    movieNameDiv.innerText=movieName;
+    movieNameDiv.style.display="inline-block";
+
+    let deleteMovie=document.createElement("button");
+    deleteMovie.innerText="X";
+    deleteMovie.onclick=()=>{
+        movieDiv.parentNode.removeChild(movieDiv);
+    }
+
+    displayMovieDiv.appendChild(movieNameDiv);
+    displayMovieDiv.appendChild(deleteMovie);
+    movieDiv.appendChild(displayMovieDiv);
+
+    let movieInput=document.createElement("input");
+    movieInput.type="hidden";
+    movieInput.value=+(movieID);
+    movieInput.setAttribute("name","genreMovie[]");
+    movieDiv.appendChild(movieInput);
+
+    const selectedGenreMovie=document.getElementById("selectedGenreMovie");
+    selectedGenreMovie.appendChild(movieDiv);
+
+}
