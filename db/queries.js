@@ -188,7 +188,7 @@ async function createGenreInDB(genrename,movieID) {
                 for (let i = 0; i < movieID.length; i++) {
                     const genreCreateMovies = `INSERT INTO movie_genres(movie_id,genre_id)
                                             VALUES($1,$2)`;
-                    await pool.query(movieCreateDirector, [movieID[i], genreid]);
+                    await pool.query(genreCreateMovies, [movieID[i], genreid]);
 
                 }
                           

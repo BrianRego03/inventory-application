@@ -1,4 +1,4 @@
-const {fetchGenreMovies,deleteGenreByIdentity} = require("../db/queries");
+const {fetchGenreMovies,deleteGenreByIdentity,createGenreInDB} = require("../db/queries");
 
 const fetchGenre=async(req,res)=>{
     const {genreID}=req.params;
@@ -13,4 +13,13 @@ const deleteGenreById=async(req,res)=>{
     res.redirect("/");
 }
 
-module.exports={fetchGenre,deleteGenreById};
+const createGenre=async(req,res)=>{
+    console.log(req.body);
+    const name= req.body.createGenre;
+    const movie=req.body.genreMovie;
+    const genreID=await createGenreInDB(name,movie);
+    res.redirect(`/genres/${genreID}`);
+
+}
+
+module.exports={fetchGenre,deleteGenreById,createGenre};
