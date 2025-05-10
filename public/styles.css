@@ -1,4 +1,4 @@
-#formContainer{
+#formContainer,#genreFormContainer{
     position: fixed;
     display: none;
     z-index: 1000;
