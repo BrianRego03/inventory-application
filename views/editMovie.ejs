@@ -4,17 +4,20 @@
         <legend>Add Movie</legend>
         <div>
             <label for="createMovie">Movie name:</label>
-            <input type="text" id="createMovie" name="createMovie" required>
+            <input type="text" id="createMovie" name="createMovie" 
+            value="<%= movie.moviename %>" required>
         
         </div>
         <div>
             <label for="createMovieUrl">Poster URL:</label>
-            <input type="url" id="createMovieUrl" name="createMovieUrl" required>
+            <input type="url" id="createMovieUrl" name="createMovieUrl" 
+            value="<%= movie.url %>" required>
         
         </div>
         <div>
-            <label for="createMovieYear">Poster URL:</label>
-            <input type="number" id="createMovieYear" name="createMovieYear" required>
+            <label for="createMovieYear">Year:</label>
+            <input type="number" id="createMovieYear" name="createMovieYear" 
+            value="<%= movie.year %>" required>
         
         </div>
         <div>
@@ -26,7 +29,19 @@
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedDirector"></div>
+            <div id="selectedDirector">
+                <% for(let i=0;i< movie.directors.length; i++){ %>
+                <div>
+                    <div>
+                        <div style="display: inline-block;"><%= movie.directors[i].dname %></div>
+                        <button onclick="this.closest('div').parentNode.remove()">X</button>
+                    </div>
+                    <input type="hidden" value="<%= movie.directors[i].did %>" 
+                    name="movieDirector[]">
+                </div>
+                <% } %>
+
+            </div>
         </div>
         <div>
             <label for="createMovieActor">Select actors:</label>
@@ -37,7 +52,21 @@
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedActor"></div>
+            <div id="selectedActor">
+                <% for(let i=0;i< movie.actors.length; i++){ %>
+                    <div>
+                        <div>
+                            <div style="display: inline-block;">
+                                <%= movie.actors[i].aname %>
+                            </div>
+                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                        </div>
+                        <input type="hidden" 
+                        value="<%= movie.actors[i].aid %>" name="movieActor[]">
+                    </div>
+                <% } %>
+
+            </div>
         </div>
         <div>
             <label for="createMovieGenre">Select genres:</label>
@@ -48,10 +77,25 @@
                     <option value="<%= genres[i].id %>"><%= genres[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedGenre"></div>
+            <div id="selectedGenre">
+               <% for(let i=0;i< movie.genres.length; i++){ %>
+                    <div>
+                        <div>
+                            <div style="display: inline-block;">
+                                <%= movie.genres[i].gname %>
+                            </div>
+                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                        </div>
+                        <input type="hidden" 
+                        value="<%= movie.genres[i].gid %>" name="movieGenre[]">
+                    </div>
+                <% } %>
+
+
+            </div>
 
         </div>
-        <button type="submit">Submit Movie</button>
+        <button type="submit">Update Movie</button>
         <button onclick="closeCreateMovie()" type="button">Cancel</button>
 
         

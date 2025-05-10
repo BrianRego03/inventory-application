@@ -1,4 +1,5 @@
-const {fetchMovieByIdentity,deleteMovieByIdentity,createMovieInDB}=require("../db/queries");
+const {fetchMovieByIdentity,deleteMovieByIdentity,
+    createMovieInDB,fetchAllPeople,fetchAllGenres}=require("../db/queries");
 
 const fetchMovieById=async(req,res)=>{
     const {movieID}=req.params;
