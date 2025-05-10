@@ -13,8 +13,12 @@ const closeCreateMovie=()=>{
     document.getElementById("formContainer").style.display="none";
 
 }
-
+let directorIDArray=[];
 const addDirector=(directorID)=>{
+    if (directorIDArray.find(director => director === directorID)) {
+        return;
+    }
+    directorIDArray.push(directorID);
     const directorSelector=document.getElementById("createMovieDirector");
     const people=JSON.parse(directorSelector.getAttribute("data-people"));
     const directorName=people.find(person=>person.id===(+directorID)).name;
@@ -45,8 +49,12 @@ const addDirector=(directorID)=>{
     selectedDirector.appendChild(directorDiv);
 
 }
-
+let actorIDArray=[];
 const addActor=(actorID)=>{
+    if (actorIDArray.find(actor => actor === actorID)) {
+        return;
+    }
+    actorIDArray.push(actorID);
 
     const actorSelector=document.getElementById("createMovieActor");
     const people=JSON.parse(actorSelector.getAttribute("data-people"));
