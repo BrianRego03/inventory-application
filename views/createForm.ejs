@@ -30,12 +30,14 @@
         </div>
         <div>
             <label for="createMovieActor">Select actors:</label>
-            <select id="createMovieActor" name="createMovieActor">
+            <select id="createMovieActor" name="createMovieActor"
+              onchange="addActor(this.value)" data-people="<%= JSON.stringify(people) %>">
                 <option value="" disabled selected></option>
                 <% for(let i=0;i< people.length; i++){ %>
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
+            <div id="selectedActor"></div>
         </div>
         <div>
             <label for="createMovieGenre">Select genres:</label>

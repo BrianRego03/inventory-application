@@ -16,10 +16,8 @@ const closeCreateMovie=()=>{
 
 const addDirector=(directorID)=>{
     const directorSelector=document.getElementById("createMovieDirector");
-    console.log(directorSelector.getAttribute("data-people"));
     const people=JSON.parse(directorSelector.getAttribute("data-people"));
     const directorName=people.find(person=>person.id===(+directorID)).name;
-    console.log(directorName);
     let directorDiv=document.createElement("div");
 
     let displayDirectorDiv=document.createElement("div");
@@ -45,5 +43,38 @@ const addDirector=(directorID)=>{
 
     const selectedDirector=document.getElementById("selectedDirector");
     selectedDirector.appendChild(directorDiv);
+
+}
+
+const addActor=(actorID)=>{
+
+    const actorSelector=document.getElementById("createMovieActor");
+    const people=JSON.parse(actorSelector.getAttribute("data-people"));
+    const actorName=people.find(person=>person.id===(+actorID)).name;
+    let actorDiv=document.createElement("div");
+
+    let displayActorDiv=document.createElement("div");
+    let actorNameDiv=document.createElement("div");
+    actorNameDiv.innerText=actorName;
+    actorNameDiv.style.display="inline-block";
+
+    let deleteActor=document.createElement("button");
+    deleteActor.innerText="X";
+    deleteActor.onclick=()=>{
+        actorDiv.parentNode.removeChild(actorDiv);
+    }
+
+    displayActorDiv.appendChild(actorNameDiv);
+    displayActorDiv.appendChild(deleteActor);
+    actorDiv.appendChild(displayActorDiv);
+
+    let actorInput=document.createElement("input");
+    actorInput.type="hidden";
+    actorInput.value=+(actorID);
+    actorInput.setAttribute("name","movieActor[]");
+    actorDiv.appendChild(actorInput);
+
+    const selectedActor=document.getElementById("selectedActor");
+    selectedActor.appendChild(actorDiv);
 
 }
