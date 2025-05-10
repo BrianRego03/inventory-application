@@ -19,12 +19,14 @@
         </div>
         <div>
             <label for="createMovieDirector">Select director:</label>
-            <select id="createMovieDirector" name="createMovieDirector">
+            <select onchange="addDirector(this.value)" id="createMovieDirector" 
+            name="createMovieDirector" data-people="<%= people %>">
                 <option value="" disabled selected></option>
                 <% for(let i=0;i< people.length; i++){ %>
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
+            <div id="selectedDirector"></div>
         </div>
         <div>
             <label for="createMovieActor">Select actors:</label>
