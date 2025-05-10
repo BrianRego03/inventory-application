@@ -140,19 +140,33 @@ async function createMovieInDB(moviename,movieurl,movieyear,directorID,actorID,g
             const {rows}=await pool.query(movieCreate,[moviename,movieurl,movieyear]);
             movieid=rows[0].id;
             if(directorID){
-                const movieCreateDirector=`INSERT INTO movie_directors(movie_id,people_id)
+                for (let i = 0; i < directorID.length; i++) {
+                    const movieCreateDirector = `INSERT INTO movie_directors(movie_id,people_id)
                                             VALUES($1,$2)`;
-                await pool.query(movieCreateDirector,[movieid,directorID]);                           
+                    await pool.query(movieCreateDirector, [movieid, directorID[i]]);
+
+                }
+                          
             }
             if(actorID){
-                const movieCreateActor=`INSERT INTO movie_actors(movie_id,people_id)
+                for (let i = 0; i < actorID.length; i++) {
+                    const movieCreateActor = `INSERT INTO movie_actors(movie_id,people_id)
                                             VALUES($1,$2)`;
-                await pool.query(movieCreateActor,[movieid,actorID]);                           
+                    await pool.query(movieCreateActor, [movieid, actorID[i]]);
+
+                }
+
+
+                          
             }
-            if(genreID){
-                const movieCreateGenres=`INSERT INTO movie_genres(movie_id,genre_id)
-                                            VALUES($1,$2)`;
-                await pool.query(movieCreateGenres,[movieid,genreID]);                           
+            if (genreID) {
+                for (let i = 0; i < genreID.length; i++) {
+                    const movieCreateGenres = `INSERT INTO movie_genres(movie_id,genre_id)
+                                                VALUES($1,$2)`;
+                    await pool.query(movieCreateGenres, [movieid, genreID[i]]);
+                }
+
+
             }
             
             return movieid;

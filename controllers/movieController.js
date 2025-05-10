@@ -18,9 +18,9 @@ const createMovie=async(req,res)=>{
     const name= req.body.creatMovie;
     const url=req.body.createMovieUrl;
     const year=req.body.createMovieYear;
-    const director=req.body.createMovieDirector;
-    const actor=req.body.createMovieActor;
-    const genre=req.body.createMovieGenre;
+    const director=req.body.movieDirector;
+    const actor=req.body.movieActor;
+    const genre=req.body.movieGenre;
     const movieID=await createMovieInDB(name,url,year,director,actor,genre);
     res.redirect(`/movies/${movieID}`);
 
