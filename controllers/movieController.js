@@ -3,8 +3,14 @@ const {fetchMovieByIdentity,deleteMovieByIdentity,createMovieInDB}=require("../d
 const fetchMovieById=async(req,res)=>{
     const {movieID}=req.params;
     const movieObj=await fetchMovieByIdentity(movieID);
+        const [people,genres]=await Promise.all(
+        [
+            fetchAllPeople(),
+            fetchAllGenres()
+        ]
+    );
     console.log(movieObj);
-    res.render("moviePage",{movie:movieObj});
+    res.render("moviePage",{movie:movieObj,people:people,genres:genres});
 }
 
 const deleteMovieById=async(req,res)=>{

@@ -1,0 +1,59 @@
+<div id="formContainer">
+    
+    <form method="POST" action="/movies/edit" id="movieForm">
+        <legend>Add Movie</legend>
+        <div>
+            <label for="createMovie">Movie name:</label>
+            <input type="text" id="createMovie" name="createMovie" required>
+        
+        </div>
+        <div>
+            <label for="createMovieUrl">Poster URL:</label>
+            <input type="url" id="createMovieUrl" name="createMovieUrl" required>
+        
+        </div>
+        <div>
+            <label for="createMovieYear">Poster URL:</label>
+            <input type="number" id="createMovieYear" name="createMovieYear" required>
+        
+        </div>
+        <div>
+            <label for="createMovieDirector">Select director:</label>
+            <select onchange="addDirector(this.value)" id="createMovieDirector" 
+            name="createMovieDirector" data-people="<%= JSON.stringify(people) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< people.length; i++){ %>
+                    <option value="<%= people[i].id %>"><%= people[i].name %></option>
+                <% } %>
+            </select>
+            <div id="selectedDirector"></div>
+        </div>
+        <div>
+            <label for="createMovieActor">Select actors:</label>
+            <select id="createMovieActor" name="createMovieActor"
+              onchange="addActor(this.value)" data-people="<%= JSON.stringify(people) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< people.length; i++){ %>
+                    <option value="<%= people[i].id %>"><%= people[i].name %></option>
+                <% } %>
+            </select>
+            <div id="selectedActor"></div>
+        </div>
+        <div>
+            <label for="createMovieGenre">Select genres:</label>
+            <select id="createMovieGenre" name="createMovieGenre"
+              onchange="addGenre(this.value)" data-genre="<%= JSON.stringify(genres) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< genres.length; i++){ %>
+                    <option value="<%= genres[i].id %>"><%= genres[i].name %></option>
+                <% } %>
+            </select>
+            <div id="selectedGenre"></div>
+
+        </div>
+        <button type="submit">Submit Movie</button>
+        <button onclick="closeCreateMovie()" type="button">Cancel</button>
+
+        
+    </form>
+</div>
