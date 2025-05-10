@@ -238,8 +238,74 @@ async function createPersonInDB(personname,personurl,directedID,actedID) {
     
 }
 
+async function updateMovieInDB(moviename,movieurl,movieyear,movieidentity,directorID,actorID,genreID) {
+    if (moviename && movieurl){
+            const movieUpdate=`UPDATE movies 
+                        SET name=$1,url=$2,release_year=$3 
+                        WHERE id=$4
+                        RETURNING id`;
+            const {rows}=await pool.query(movieUpdate,[moviename,movieurl,movieyear,movieidentity]);
+            movieid=rows[0].id;
+            if(directorID){
+                await pool.query(
+                `DELETE FROM movie_directors 
+                 WHERE movie_id = $1 AND people_id NOT IN (${directorID.join(",")})`,
+                [movieid]
+            );
+            for (const director of directorID) {
+                const directorInsert = `
+                    INSERT INTO movie_directors (movie_id, people_id) 
+                    VALUES ($1, $2) 
+                    ON CONFLICT (movie_id, people_id) DO NOTHING;
+                `;
+                await pool.query(directorInsert, [movieid, director]);
+            }
+                          
+            }
+            if(actorID){
+                await pool.query(
+                    `DELETE FROM movie_actors
+                    WHERE movie_id=$1 AND people_id NOT IN (${actorID.join(",")})`,[movieid]
+                )
+                for (const actor of actorID) {
+                    const actorInsert = `INSERT INTO movie_actors(movie_id,people_id)
+                                            VALUES($1,$2)
+                                            ON CONFLICT(movie_id,people_id) DO NOTHING`;
+                    await pool.query(actorInsert, [movieid, actor]);
+
+                }
+
+
+                          
+            }
+            if(genreID){
+                await pool.query(
+                    `DELETE FROM movie_genres
+                    WHERE movie_id=$1 AND genre_id NOT IN (${genreID.join(",")})`,[movieid]
+                )
+                for (const genre of genreID) {
+                    const genreInsert = `INSERT INTO movie_genres(movie_id,genre_id)
+                                            VALUES($1,$2)
+                                            ON CONFLICT(movie_id,genre_id) DO NOTHING`;
+                    await pool.query(genreInsert, [movieid, genre]);
+
+                }
+
+
+                          
+            }
+            
+            return movieid;
+    }
+    return;
+                 
+
+    
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
     deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
     fetchAllGenres,fetchAllPeople,
-    createMovieInDB,createGenreInDB,createPersonInDB
+    createMovieInDB,createGenreInDB,createPersonInDB,
+    updateMovieInDB
 };
