@@ -20,7 +20,7 @@
         <div>
             <label for="createMovieDirector">Select director:</label>
             <select onchange="addDirector(this.value)" id="createMovieDirector" 
-            name="createMovieDirector" data-people="<%= people %>">
+            name="createMovieDirector" data-people="<%= JSON.stringify(people) %>">
                 <option value="" disabled selected></option>
                 <% for(let i=0;i< people.length; i++){ %>
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
