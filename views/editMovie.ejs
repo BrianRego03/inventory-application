@@ -1,6 +1,6 @@
 <div id="formContainer">
     
-    <form method="POST" action="/movies/edit" id="movieForm">
+    <form method="POST" action="/movies/update" id="movieForm">
         <legend>Add Movie</legend>
         <div>
             <label for="createMovie">Movie name:</label>
@@ -18,6 +18,11 @@
             <label for="createMovieYear">Year:</label>
             <input type="number" id="createMovieYear" name="createMovieYear" 
             value="<%= movie.year %>" required>
+        
+        </div>
+        <div>
+            <input type="hidden" id="createMovieID" name="createMovieID" 
+            value="<%= movie.id %>" required>
         
         </div>
         <div>
