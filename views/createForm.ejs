@@ -41,12 +41,15 @@
         </div>
         <div>
             <label for="createMovieGenre">Select genres:</label>
-            <select id="createMovieGenre" name="createMovieGenre">
+            <select id="createMovieGenre" name="createMovieGenre"
+              onchange="addGenre(this.value)" data-genre="<%= JSON.stringify(genres) %>">
                 <option value="" disabled selected></option>
                 <% for(let i=0;i< genres.length; i++){ %>
                     <option value="<%= genres[i].id %>"><%= genres[i].name %></option>
                 <% } %>
             </select>
+            <div id="selectedGenre"></div>
+
         </div>
         <button type="submit">Submit Movie</button>
         <button onclick="closeCreateMovie()" type="button">Cancel</button>

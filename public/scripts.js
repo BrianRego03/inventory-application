@@ -78,3 +78,40 @@ const addActor=(actorID)=>{
     selectedActor.appendChild(actorDiv);
 
 }
+let genreIDArray=[];
+const addGenre=(genreID)=>{
+    if(genreIDArray.find(genre=>genre===genreID)){
+        return;
+    }
+    genreIDArray.push(genreID);
+    
+    const genreSelector=document.getElementById("createMovieGenre");
+    const genres=JSON.parse(genreSelector.getAttribute("data-genre"));
+    const genreName=genres.find(genre=>genre.id===(+genreID)).name;
+    let genreDiv=document.createElement("div");
+
+    let displayGenreDiv=document.createElement("div");
+    let genreNameDiv=document.createElement("div");
+    genreNameDiv.innerText=genreName;
+    genreNameDiv.style.display="inline-block";
+
+    let deleteGenre=document.createElement("button");
+    deleteGenre.innerText="X";
+    deleteGenre.onclick=()=>{
+        genreDiv.parentNode.removeChild(genreDiv);
+    }
+
+    displayGenreDiv.appendChild(genreNameDiv);
+    displayGenreDiv.appendChild(deleteGenre);
+    genreDiv.appendChild(displayGenreDiv);
+
+    let genreInput=document.createElement("input");
+    genreInput.type="hidden";
+    genreInput.value=+(genreID);
+    genreInput.setAttribute("name","movieGenre[]");
+    genreDiv.appendChild(genreInput);
+
+    const selectedGenre=document.getElementById("selectedGenre");
+    selectedGenre.appendChild(genreDiv);
+
+}
