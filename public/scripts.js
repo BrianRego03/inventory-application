@@ -208,3 +208,41 @@ const addMovieToActor=(movieID)=>{
     selectedActorMovie.appendChild(movieDiv);
 
 }
+
+let directorMovieIDArray=[];
+const addMovieToDirector=(movieID)=>{
+    if(directorMovieIDArray.find(movie=>movie===movieID)){
+        return;
+    }
+    directorMovieIDArray.push(movieID);
+    
+    const movieSelector=document.getElementById("createDirectorMovie");
+    const movies=JSON.parse(movieSelector.getAttribute("data-movie"));
+    const movieName=movies.find(movie=>movie.id===(+movieID)).name;
+    let movieDiv=document.createElement("div");
+
+    let displayMovieDiv=document.createElement("div");
+    let movieNameDiv=document.createElement("div");
+    movieNameDiv.innerText=movieName;
+    movieNameDiv.style.display="inline-block";
+
+    let deleteMovie=document.createElement("button");
+    deleteMovie.innerText="X";
+    deleteMovie.onclick=()=>{
+        movieDiv.parentNode.removeChild(movieDiv);
+    }
+
+    displayMovieDiv.appendChild(movieNameDiv);
+    displayMovieDiv.appendChild(deleteMovie);
+    movieDiv.appendChild(displayMovieDiv);
+
+    let movieInput=document.createElement("input");
+    movieInput.type="hidden";
+    movieInput.value=+(movieID);
+    movieInput.setAttribute("name","directorMovie[]");
+    movieDiv.appendChild(movieInput);
+
+    const selectedDirectorMovie=document.getElementById("selectedDirectorMovie");
+    selectedDirectorMovie.appendChild(movieDiv);
+
+}
