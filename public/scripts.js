@@ -255,3 +255,20 @@ const addMovieToDirector=(movieID)=>{
     selectedDirectorMovie.appendChild(movieDiv);
 
 }
+
+const deletionCheck=async()=>{
+    let inputPassWord=document.getElementById("deleteMoviePass").value;
+    let movieID=document.getElementById("deleteId").value;
+    let deleteUrl=`/movies/delete?id=${+(movieID)}&pass=${inputPassWord}`;
+    const res = await fetch(deleteUrl);
+    window.location.href=res.url;
+}
+
+const displayDeleteMovie=()=>{
+    document.getElementById("deleteMovieContainer").style.display="flex";
+}
+
+const closeDeleteMovie=()=>{
+    document.getElementById("deleteMovieContainer").style.display="none";
+}
+

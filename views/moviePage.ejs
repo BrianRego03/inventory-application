@@ -54,9 +54,10 @@
     </div>
     <div>
         <button type="button" onclick="displayForm()">Edit movie</button>
-        <button onclick="window.location.href='/movies/<%= movie.id %>/delete/'">Delete movie</button>
+        <button onclick="displayDeleteMovie()">Delete movie</button>
     </div>
     <%- include("editMovie",{movie:movie,people:people,genres:genres}) %>
+    <%- include("deleteVerify",{id:movie.id}) %>
 
     
 </body>
