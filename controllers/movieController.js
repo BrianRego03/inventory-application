@@ -34,6 +34,9 @@ const createMovie=async(req,res)=>{
 }
 
 const updateMovie=async(req,res)=>{
+    if(req.body.createMoviePass!=="shazam"){
+        return res.redirect(`/movies/${req.body.createMovieID}`);
+    }
     const name= req.body.createMovie;
     const url=req.body.createMovieUrl;
     const year=req.body.createMovieYear;

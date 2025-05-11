@@ -31,6 +31,9 @@ const createGenre=async(req,res)=>{
 }
 
 const updateGenre=async(req,res)=>{
+    if(req.body.createGenrePass!=="shazam"){
+        return res.redirect(`/genres/${req.body.createGenreID}`);
+    }
     console.log(req.body);
     const name= req.body.createGenre;
     const movie=req.body.genreMovie;

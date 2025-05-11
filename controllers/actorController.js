@@ -29,6 +29,9 @@ const createActor=async(req,res)=>{
 }
 
 const updateActor=async(req,res)=>{
+    if(req.body.createPersonPass!=="shazam"){
+        return res.redirect(`/actors/${req.body.createPersonID}`);
+    }
     const name= req.body.createPerson;
     const url=req.body.createPersonUrl;
     const id=req.body.createPersonID;
