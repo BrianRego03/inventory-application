@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="/scripts.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <img style="max-height: 200px;" src=<%= movies.actorurl %>>
@@ -53,7 +55,7 @@
         </div>
     <% } %>
     <div>
-        <button type="button" onclick="displayForm()">Edit person</button>
+        <button type="button" onclick="displayPersonForm()">Edit person</button>
 
         <button onclick="window.location.href='/actors/<%= movies.id %>/delete/'">Delete person</button>
     </div>   

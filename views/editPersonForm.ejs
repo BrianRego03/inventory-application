@@ -17,9 +17,9 @@
             <select onchange="addMovieToActor(this.value)" id="createActorMovie" 
             name="createActorMovie" data-movie="<%= JSON.stringify(allMovies) %>">
                 <option value="" disabled selected></option>
-                <% for(let i=0;i< movies.length; i++){ %>
-                    <option value="<%= movies[i].id %>">
-                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                <% for(let i=0;i< allMovies.length; i++){ %>
+                    <option value="<%= allMovies[i].id %>">
+                        <%= allMovies[i].name + "(" + allMovies[i].release_year + ")" %>
                     </option>
                 <% } %>
             </select>
@@ -30,9 +30,9 @@
             <select onchange="addMovieToDirector(this.value)" id="createDirectorMovie" 
             name="createDirectorMovie" data-movie="<%= JSON.stringify(allMovies) %>">
                 <option value="" disabled selected></option>
-                <% for(let i=0;i< movies.length; i++){ %>
-                    <option value="<%= movies[i].id %>">
-                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                <% for(let i=0;i< allMovies.length; i++){ %>
+                    <option value="<%= allMovies[i].id %>">
+                        <%= allMovies[i].name + "(" + allMovies[i].release_year + ")" %>
                     </option>
                 <% } %>
             </select>
