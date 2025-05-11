@@ -303,9 +303,61 @@ async function updateMovieInDB(moviename,movieurl,movieyear,movieidentity,direct
     
 }
 
+
+async function updatePersonInDB(personname,personurl,personid,directedID,actedID) {
+    if (personname){
+
+            const personUpdate=`UPDATE people 
+                        SET name=$1,url=$2 
+                        WHERE id=$3
+                        RETURNING id`;            
+            const {rows}=await pool.query(personUpdate,[personname,personurl,personid]);
+            personid=rows[0].id;
+
+            if(actedID){
+                await pool.query(
+                    `DELETE FROM movie_actors
+                    WHERE people_id=$1 AND movie_id NOT IN (${actedID.join(",")})`,[personid]
+                )
+                for (const movie of actedID) {
+                    const actedInsert = `INSERT INTO movie_actors(movie_id,people_id)
+                                            VALUES($1,$2)
+                                            ON CONFLICT(movie_id,people_id) DO NOTHING`;
+                    await pool.query(actedInsert, [movie, personid]);
+
+                }
+
+
+            } 
+            if(directedID){
+                await pool.query(
+                    `DELETE FROM movie_directors
+                    WHERE people_id=$1 AND movie_id NOT IN (${directedID.join(",")})`,[personid]
+                )
+                for (const movie of directedID) {
+                    const directedInsert = `INSERT INTO movie_directors(movie_id,people_id)
+                                            VALUES($1,$2)
+                                            ON CONFLICT(movie_id,people_id) DO NOTHING`;
+                    await pool.query(directedInsert, [movie, personid]);
+
+                }
+
+
+            }         
+
+            
+            
+            return personid;
+    }
+    return;
+                 
+
+    
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
     deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
     fetchAllGenres,fetchAllPeople,
     createMovieInDB,createGenreInDB,createPersonInDB,
-    updateMovieInDB
+    updateMovieInDB,updatePersonInDB
 };

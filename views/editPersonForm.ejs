@@ -15,6 +15,11 @@
         
         </div>
         <div>
+            <input type="hidden" id="createPersonID" name="createPersonID" 
+            value="<%= movies.id %>" required>
+        
+        </div>
+        <div>
             <label for="createActorMovie">Acted in:</label>
             <select onchange="addMovieToActor(this.value)" id="createActorMovie" 
             name="createActorMovie" data-movie="<%= JSON.stringify(allMovies) %>">
