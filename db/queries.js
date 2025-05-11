@@ -12,7 +12,7 @@ async function fetchAllGenresDB() {
     return rows;
 }
 
-async function fetchAllPeople() {
+async function fetchAllPeopleDB() {
     const {rows}=await pool.query("SELECT * FROM people");
     console.log(rows);
     return rows;
@@ -407,5 +407,5 @@ module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorM
     fetchAllGenres,fetchAllPeople,
     createMovieInDB,createGenreInDB,createPersonInDB,
     updateMovieInDB,updatePersonInDB,updateGenreInDB,
-    fetchAllGenresDB
+    fetchAllGenresDB,fetchAllPeopleDB
 };

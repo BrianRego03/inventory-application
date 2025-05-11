@@ -1,5 +1,17 @@
 const {fetchActorMovies,deleteActorByIdentity,createPersonInDB,
-    fetchAllMovies,updatePersonInDB} = require("../db/queries");
+    fetchAllMovies,updatePersonInDB,fetchAllPeopleDB
+} = require("../db/queries");
+
+const fetchAllPeople=async(req,res)=>{
+    const [people,movies]=await Promise.all(
+        [
+            fetchAllPeopleDB(),
+            fetchAllMovies()
+        ]
+    );
+ 
+    res.render("personIndex",{people:people,movies:movies});
+}    
 
 const fetchActor=async(req,res)=>{
     const {actorID}=req.params;
@@ -48,4 +60,4 @@ const updateActor=async(req,res)=>{
     res.redirect(`/actors/${actorID}`);
 }
 
-module.exports={fetchActor,deleteActorById,createActor,updateActor};
+module.exports={fetchActor,deleteActorById,createActor,updateActor,fetchAllPeople};
