@@ -1,3 +1,23 @@
+body{
+    margin: 0px;
+    background-color: #F5C45E;
+}
+button, .btn-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+a{
+    text-decoration: none;
+}
+
 #formContainer,#genreFormContainer,#personFormContainer,
 #deleteMovieContainer{
     position: fixed;
@@ -8,4 +28,83 @@
     transform: translate(-50%, -50%);
     background-color: burlywood;
     padding: 40px;
+}
+
+.headerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(16, 46, 80);
+    color: aliceblue;
+    padding: 10px;
+}
+.heading{
+    min-width: 350px;
+
+}
+.subHeader{
+    display: flex;
+    min-width: 20%;
+}
+.subHeader a{
+    margin-right: 30px;
+    text-decoration: none;
+    color: aliceblue;
+}
+.heading h1:hover,.subHeader a:hover{
+    color:#E78B48
+}
+.movieContainer{
+    border: 8px solid #BE3D2A;
+    border-radius: 8px;
+    margin: 5px;
+    background-color: #E78B48;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movieContainer img{
+    max-width: 100%;
+}
+.addMovieButton{
+    background-color: rgb(16, 46, 80);
+    color: aliceblue;
+    min-width: 60px;
+    min-height: 40px;
+    font-size: 32px;
+    border: 10px solid rgb(16, 46, 80);
+    border-radius: 10px;
+    padding: 10px;
+}
+.addMovieButton:hover{
+    background-color: #BE3D2A;
+    border-color:#BE3D2A ;
+
+}
+
+.buttonHolder{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.movieLinks{
+    color: rgb(16, 46, 80);
+    width: 100%;
+    height: 100%;
+}
+
+.movieLinks:hover{
+    color: aliceblue;
+}
+.movieContainer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.movieContainer div:hover{
+    background-color:rgb(16, 46, 80);
+    color: aliceblue;
 }
