@@ -6,6 +6,18 @@ async function fetchAllMovies() {
     return rows;
 }
 
+async function fetchAllGenresDB() {
+    const {rows}=await pool.query("SELECT * FROM genres");
+    console.log(rows);
+    return rows;
+}
+
+async function fetchAllPeople() {
+    const {rows}=await pool.query("SELECT * FROM people");
+    console.log(rows);
+    return rows;
+}
+
 async function fetchMovieByIdentity(id) {
     // const {rows}=await pool.query("SELECT * FROM movies WHERE movies.id=$1",[id]);
     const movieQuery=`SELECT m.name AS moviename,
@@ -394,5 +406,6 @@ module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorM
     deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
     fetchAllGenres,fetchAllPeople,
     createMovieInDB,createGenreInDB,createPersonInDB,
-    updateMovieInDB,updatePersonInDB,updateGenreInDB
+    updateMovieInDB,updatePersonInDB,updateGenreInDB,
+    fetchAllGenresDB
 };

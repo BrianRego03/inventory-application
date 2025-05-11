@@ -1,0 +1,13 @@
+<div style="display: flex; justify-content: space-evenly;flex-wrap: wrap;">
+    <% for(i=0;i< genres.length;i++){ %>
+        <div style="width: 210px;text-align: center;">
+            <div>
+                <a href="/genres/<%= genres[i].id %>">
+                    <%= genres[i].name %>
+                </a>
+            </div>
+            
+        </div>
+    <% } %>  
+
+</div>
