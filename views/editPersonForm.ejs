@@ -1,0 +1,47 @@
+<div id="personFormContainer">
+    
+    <form method="POST" action="/actors/update" id="personForm">
+        <legend>Edit Person</legend>
+        <div>
+            <label for="createPerson">Person name:</label>
+            <input type="text" id="createPerson" name="createPerson" required>
+        
+        </div>
+        <div>
+            <label for="createPersonUrl">Person image URL:</label>
+            <input type="url" id="createPersonUrl" name="createPersonUrl" required>
+        
+        </div>
+        <div>
+            <label for="createActorMovie">Acted in:</label>
+            <select onchange="addMovieToActor(this.value)" id="createActorMovie" 
+            name="createActorMovie" data-movie="<%= JSON.stringify(allMovies) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< movies.length; i++){ %>
+                    <option value="<%= movies[i].id %>">
+                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                    </option>
+                <% } %>
+            </select>
+            <div id="selectedActorMovie"></div>
+        </div>
+        <div>
+            <label for="createDirectorMovie">Acted in:</label>
+            <select onchange="addMovieToDirector(this.value)" id="createDirectorMovie" 
+            name="createDirectorMovie" data-movie="<%= JSON.stringify(allMovies) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< movies.length; i++){ %>
+                    <option value="<%= movies[i].id %>">
+                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                    </option>
+                <% } %>
+            </select>
+            <div id="selectedDirectorMovie"></div>
+        </div>
+ 
+        <button type="submit">Submit Person</button>
+        <button onclick="closeCreatePerson()" type="button">Cancel</button>
+
+        
+    </form>
+</div>

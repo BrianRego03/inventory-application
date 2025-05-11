@@ -53,8 +53,12 @@
         </div>
     <% } %>
     <div>
+        <button type="button" onclick="displayForm()">Edit person</button>
+
         <button onclick="window.location.href='/actors/<%= movies.id %>/delete/'">Delete person</button>
     </div>   
+    <%- include("editPersonForm",{movies:movies,allMovies:allMovies}) %>
+
     
     
     

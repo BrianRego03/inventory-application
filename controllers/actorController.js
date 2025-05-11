@@ -1,10 +1,16 @@
-const {fetchActorMovies,deleteActorByIdentity,createPersonInDB} = require("../db/queries");
+const {fetchActorMovies,deleteActorByIdentity,createPersonInDB,fetchAllMovies} = require("../db/queries");
 
 const fetchActor=async(req,res)=>{
     const {actorID}=req.params;
-    const movies=await fetchActorMovies(actorID);
+    const [allMovies,movies]=await Promise.all(
+        [
+            fetchAllMovies(),
+            fetchActorMovies(actorID)
+        ]
+    );
     console.log(movies);
-    res.render("actorPage",{movies:movies});
+    console.log(allMovies);
+    res.render("actorPage",{movies:movies,allMovies:allMovies});
 }
 
 const deleteActorById=async(req,res)=>{
