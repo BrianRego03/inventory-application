@@ -10,11 +10,11 @@
         <div>
             <label for="createGenreMovie">Select movies:</label>
             <select onchange="addMovieToGenre(this.value)" id="createGenreMovie" 
-            name="createGenreMovie" data-movie="<%= JSON.stringify(movies) %>">
+            name="createGenreMovie" data-movie="<%= JSON.stringify(allMovies) %>">
                 <option value="" disabled selected></option>
-                <% for(let i=0;i< movies.length; i++){ %>
-                    <option value="<%= movies[i].id %>">
-                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                <% for(let i=0;i< allMovies.length; i++){ %>
+                    <option value="<%= allMovies[i].id %>">
+                        <%= allMovies[i].name + "(" + allMovies[i].release_year + ")" %>
                     </option>
                 <% } %>
             </select>

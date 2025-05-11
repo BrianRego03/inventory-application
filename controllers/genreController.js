@@ -1,10 +1,18 @@
-const {fetchGenreMovies,deleteGenreByIdentity,createGenreInDB} = require("../db/queries");
+const {fetchGenreMovies,deleteGenreByIdentity,createGenreInDB,
+    fetchAllMovies
+} = require("../db/queries");
 
 const fetchGenre=async(req,res)=>{
     const {genreID}=req.params;
-    const movies=await fetchGenreMovies(genreID);
+ 
+    const [allMovies,movies]=await Promise.all(
+        [
+            fetchAllMovies(),
+            fetchGenreMovies(genreID)
+        ]
+    );
     console.log(movies);
-    res.render("genrePage",{movies:movies});
+    res.render("genrePage",{movies:movies,allMovies:allMovies});
 }
 
 const deleteGenreById=async(req,res)=>{
