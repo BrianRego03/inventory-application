@@ -4,7 +4,8 @@
         <legend>Edit Genre</legend>
         <div>
             <label for="createGenre">Genre name:</label>
-            <input type="text" id="createGenre" name="createGenre" required>
+            <input type="text" id="createGenre" name="createGenre" 
+            value="<%= movies.genrename %>" required>
         
         </div>
         <div>
@@ -18,7 +19,20 @@
                     </option>
                 <% } %>
             </select>
-            <div id="selectedGenreMovie"></div>
+            <div id="selectedGenreMovie">
+                <% for(let i=0;i< movies.genremovies.length; i++){ %>
+                    <div>
+                        <div>
+                            <div style="display: inline-block;">
+                                <%= movies.genremovies[i].movie_name %>
+                            </div>
+                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                        </div>
+                        <input type="hidden" value="<%= movies.genremovies[i].movie_id %>" 
+                        name="genreMovie[]">
+                    </div>
+                    <% } %>
+            </div>
         </div>
  
         <button type="submit">Submit Genre</button>
