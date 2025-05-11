@@ -28,6 +28,8 @@ a{
     transform: translate(-50%, -50%);
     background-color: burlywood;
     padding: 40px;
+    background-color: rgb(16, 46, 80);
+    color: aliceblue;
 }
 
 .headerContainer{
@@ -106,4 +108,19 @@ a{
 .movieContainer:hover{
     background-color:rgb(16, 46, 80);
     color: aliceblue;
+}
+
+
+form{
+
+    background-color: rgb(16, 46, 80);
+    color: aliceblue;
+    min-width: 30vw;
+}
+
+form div{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }

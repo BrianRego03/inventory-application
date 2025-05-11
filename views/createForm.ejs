@@ -26,8 +26,9 @@
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedDirector"></div>
+            
         </div>
+        <div id="selectedDirector"></div>
         <div>
             <label for="createMovieActor">Select actors:</label>
             <select id="createMovieActor" name="createMovieActor"
@@ -37,8 +38,9 @@
                     <option value="<%= people[i].id %>"><%= people[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedActor"></div>
+            
         </div>
+        <div id="selectedActor"></div>
         <div>
             <label for="createMovieGenre">Select genres:</label>
             <select id="createMovieGenre" name="createMovieGenre"
@@ -48,9 +50,10 @@
                     <option value="<%= genres[i].id %>"><%= genres[i].name %></option>
                 <% } %>
             </select>
-            <div id="selectedGenre"></div>
 
         </div>
+        <div id="selectedGenre"></div>
+
         <button type="submit">Submit Movie</button>
         <button onclick="closeCreateMovie()" type="button">Cancel</button>
 
