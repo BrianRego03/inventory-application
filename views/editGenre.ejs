@@ -1,0 +1,29 @@
+<div id="genreFormContainer">
+    
+    <form method="POST" action="/genres/update" id="genreForm">
+        <legend>Edit Genre</legend>
+        <div>
+            <label for="createGenre">Genre name:</label>
+            <input type="text" id="createGenre" name="createGenre" required>
+        
+        </div>
+        <div>
+            <label for="createGenreMovie">Select movies:</label>
+            <select onchange="addMovieToGenre(this.value)" id="createGenreMovie" 
+            name="createGenreMovie" data-movie="<%= JSON.stringify(movies) %>">
+                <option value="" disabled selected></option>
+                <% for(let i=0;i< movies.length; i++){ %>
+                    <option value="<%= movies[i].id %>">
+                        <%= movies[i].name + "(" + movies[i].release_year + ")" %>
+                    </option>
+                <% } %>
+            </select>
+            <div id="selectedGenreMovie"></div>
+        </div>
+ 
+        <button type="submit">Submit Genre</button>
+        <button onclick="closeCreateGenre()" type="button">Cancel</button>
+
+        
+    </form>
+</div>
