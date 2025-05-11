@@ -15,7 +15,13 @@ const fetchActor=async(req,res)=>{
 }
 
 const deleteActorById=async(req,res)=>{
-    const {actorID}=req.params;
+   
+    const actorID=+(req.query.id);
+    const moviePass=req.query.pass;
+    if(moviePass!=="shazam"){
+        return res.redirect("/");
+
+    }
     await deleteActorByIdentity(actorID);
     res.redirect("/");
 }

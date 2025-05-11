@@ -16,7 +16,12 @@ const fetchGenre=async(req,res)=>{
 }
 
 const deleteGenreById=async(req,res)=>{
-    const {genreID}=req.params;
+    const genreID=+(req.query.id);
+    const moviePass=req.query.pass;
+    if(moviePass!=="shazam"){
+        return res.redirect("/");
+
+    }
     await deleteGenreByIdentity(genreID);
     res.redirect("/");
 }

@@ -29,9 +29,11 @@
     <div>
         <button type="button" onclick="displayGenreForm()">Edit genre</button>
 
-        <button onclick="window.location.href='/genres/<%= movies.id %>/delete/'">Delete genre</button>
+        <button onclick="displayDeleteMovie()">Delete genre</button>
     </div>
     <%- include("editGenre",{movies:movies,allMovies:allMovies}) %>
+    <%- include("deleteVerify",{id:movies.id,type:'genres'}) %>
+
 
     
     

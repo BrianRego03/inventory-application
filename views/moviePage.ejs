@@ -57,7 +57,7 @@
         <button onclick="displayDeleteMovie()">Delete movie</button>
     </div>
     <%- include("editMovie",{movie:movie,people:people,genres:genres}) %>
-    <%- include("deleteVerify",{id:movie.id}) %>
+    <%- include("deleteVerify",{id:movie.id,type:'movies'}) %>
 
     
 </body>

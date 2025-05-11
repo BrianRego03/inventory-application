@@ -256,10 +256,10 @@ const addMovieToDirector=(movieID)=>{
 
 }
 
-const deletionCheck=async()=>{
+const deletionCheck=async(type)=>{
     let inputPassWord=document.getElementById("deleteMoviePass").value;
     let movieID=document.getElementById("deleteId").value;
-    let deleteUrl=`/movies/delete?id=${+(movieID)}&pass=${inputPassWord}`;
+    let deleteUrl=`/${type}/delete?id=${+(movieID)}&pass=${inputPassWord}`;
     const res = await fetch(deleteUrl);
     window.location.href=res.url;
 }

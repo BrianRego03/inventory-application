@@ -4,8 +4,9 @@ actorRouter= Router();
 
 const {fetchActor,deleteActorById,createActor,updateActor} = require("../controllers/actorController");
 
+actorRouter.get("/delete",deleteActorById);
+
 actorRouter.get("/:actorID",fetchActor);
-actorRouter.get("/:actorID/delete",deleteActorById);
 actorRouter.post("/create",createActor);
 actorRouter.post("/update",updateActor);
 
