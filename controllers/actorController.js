@@ -35,7 +35,8 @@ const updateActor=async(req,res)=>{
 
     const acted=req.body.actorMovie;
     const directed=req.body.directorMovie;
-    const actorID=await updatePersonInDB(name,url,directed,acted);
+    console.log(req.body);
+    const actorID=await updatePersonInDB(name,url,id,directed,acted);
     res.redirect(`/actors/${actorID}`);
 }
 

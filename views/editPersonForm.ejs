@@ -39,7 +39,7 @@
                             </div>
                             <button onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
-                        <input type="hidden" value="<%= movies.actormovies[i].movies_id %>" 
+                        <input type="hidden" value="<%= movies.actormovies[i].movie_id %>" 
                         name="actorMovie[]">
                     </div>
                     <% } %>
@@ -65,7 +65,7 @@
                             </div>
                             <button onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
-                        <input type="hidden" value="<%= movies.directormovies[i].movies_id %>" 
+                        <input type="hidden" value="<%= movies.directormovies[i].movie_id %>" 
                         name="directorMovie[]">
                     </div>
                     <% } %>
