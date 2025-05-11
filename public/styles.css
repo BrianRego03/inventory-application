@@ -63,6 +63,7 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: stretch;
 }
 
 .movieContainer img{
@@ -92,19 +93,17 @@ a{
 
 .movieLinks{
     color: rgb(16, 46, 80);
-    width: 100%;
-    height: 100%;
+
 }
 
-.movieLinks:hover{
-    color: aliceblue;
-}
+
 .movieContainer div{
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 80px;
 }
-.movieContainer div:hover{
+.movieContainer:hover{
     background-color:rgb(16, 46, 80);
     color: aliceblue;
 }
