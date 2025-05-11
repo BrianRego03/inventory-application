@@ -355,9 +355,44 @@ async function updatePersonInDB(personname,personurl,personid,directedID,actedID
     
 }
 
+async function updateGenreInDB(genrename,genreid,movieID) {
+    if (genrename){
+
+            const personUpdate=`UPDATE genres 
+                        SET name=$1 
+                        WHERE id=$2
+                        RETURNING id`;            
+            const {rows}=await pool.query(personUpdate,[genrename,genreid]);
+            console.log(movieID);
+            console.log(genreid);
+            if(movieID){
+                await pool.query(
+                    `DELETE FROM movie_genres
+                    WHERE genre_id=$1 AND movie_id NOT IN (${movieID.join(",")})`,[genreid]
+                )
+                for (const movie of movieID) {
+                    const movieInsert = `INSERT INTO movie_genres(movie_id,genre_id)
+                                            VALUES($1,$2)
+                                            ON CONFLICT(movie_id,genre_id) DO NOTHING`;
+                    await pool.query(movieInsert, [movie, genreid]);
+
+                }
+
+
+            } 
+            
+            
+            return genreid;
+    }
+    return;
+                 
+
+    
+}
+
 module.exports={fetchAllMovies,fetchMovieByIdentity,fetchGenreMovies,fetchActorMovies,
     deleteMovieByIdentity,deleteGenreByIdentity,deleteActorByIdentity,
     fetchAllGenres,fetchAllPeople,
     createMovieInDB,createGenreInDB,createPersonInDB,
-    updateMovieInDB,updatePersonInDB
+    updateMovieInDB,updatePersonInDB,updateGenreInDB
 };

@@ -9,6 +9,11 @@
         
         </div>
         <div>
+            <input type="hidden" id="createGenreID" name="createGenreID" 
+            value="<%= movies.id %>" required>
+        
+        </div>
+        <div>
             <label for="createGenreMovie">Select movies:</label>
             <select onchange="addMovieToGenre(this.value)" id="createGenreMovie" 
             name="createGenreMovie" data-movie="<%= JSON.stringify(allMovies) %>">
