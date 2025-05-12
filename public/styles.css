@@ -30,6 +30,8 @@ a{
     padding: 40px;
     background-color: rgb(16, 46, 80);
     color: aliceblue;
+    border: 8px solid #7F8C8D;
+    border-radius: 8px;
 }
 
 .headerContainer{
@@ -115,12 +117,15 @@ form{
 
     background-color: rgb(16, 46, 80);
     color: aliceblue;
-    min-width: 30vw;
+    max-width: 30vw;
+    min-width: 260px;
+
 }
 
 form div{
     margin-top: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
 }
