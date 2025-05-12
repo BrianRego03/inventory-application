@@ -3,8 +3,12 @@
         <div>
             <label for="deleteMoviePass">Enter password:</label>
             <input type="text" id="deleteMoviePass" name="deleteMoviePass" required>
-            <button type="button" onclick="deletionCheck('<%= type %>')">Proceed</button>
-            <button ype="button" onclick="closeDeleteMovie()">Cancel</button>
+            <div class="deleteContainer">
+                <button type="button" onclick="deletionCheck('<%= type %>')" class="submitButton">Proceed</button>
+                <button ype="button" onclick="closeDeleteMovie()" class="cancelForm">Cancel</button>
+            
+            </div>
+
         
         </div>
         <input type="hidden" id="deleteId" value="<%= id %>">

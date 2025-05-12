@@ -28,15 +28,19 @@ const addDirector=(directorID)=>{
     let directorNameDiv=document.createElement("div");
     directorNameDiv.innerText=directorName;
     directorNameDiv.style.display="inline-block";
+    directorNameDiv.classList.add("nameTag");
 
     let deleteDirector=document.createElement("button");
     deleteDirector.innerText="X";
+    deleteDirector.classList.add("cancelTag");
     deleteDirector.onclick=()=>{
         directorDiv.parentNode.removeChild(directorDiv);
+        directorIDArray.pop(directorID);
     }
 
     displayDirectorDiv.appendChild(directorNameDiv);
     displayDirectorDiv.appendChild(deleteDirector);
+    displayDirectorDiv.classList.add("tagContainer");
     directorDiv.appendChild(displayDirectorDiv);
 
     let directorInput=document.createElement("input");
@@ -65,15 +69,19 @@ const addActor=(actorID)=>{
     let actorNameDiv=document.createElement("div");
     actorNameDiv.innerText=actorName;
     actorNameDiv.style.display="inline-block";
+    actorNameDiv.classList.add("nameTag");
 
     let deleteActor=document.createElement("button");
     deleteActor.innerText="X";
+    deleteActor.classList.add("cancelTag");
     deleteActor.onclick=()=>{
         actorDiv.parentNode.removeChild(actorDiv);
+        actorIDArray.pop(actorID);
     }
 
     displayActorDiv.appendChild(actorNameDiv);
     displayActorDiv.appendChild(deleteActor);
+    displayActorDiv.classList.add("tagContainer");
     actorDiv.appendChild(displayActorDiv);
 
     let actorInput=document.createElement("input");
@@ -102,15 +110,19 @@ const addGenre=(genreID)=>{
     let genreNameDiv=document.createElement("div");
     genreNameDiv.innerText=genreName;
     genreNameDiv.style.display="inline-block";
+    genreNameDiv.classList.add("nameTag");
 
     let deleteGenre=document.createElement("button");
     deleteGenre.innerText="X";
+    deleteGenre.classList.add("cancelTag");
     deleteGenre.onclick=()=>{
         genreDiv.parentNode.removeChild(genreDiv);
+        genreIDArray.pop(genreID);
     }
 
     displayGenreDiv.appendChild(genreNameDiv);
     displayGenreDiv.appendChild(deleteGenre);
+    displayGenreDiv.classList.add("tagContainer");
     genreDiv.appendChild(displayGenreDiv);
 
     let genreInput=document.createElement("input");
@@ -149,15 +161,19 @@ const addMovieToGenre=(movieID)=>{
     let movieNameDiv=document.createElement("div");
     movieNameDiv.innerText=movieName;
     movieNameDiv.style.display="inline-block";
+    movieNameDiv.classList.add("nameTag");
 
     let deleteMovie=document.createElement("button");
     deleteMovie.innerText="X";
+    deleteMovie.classList.add("cancelTag");
     deleteMovie.onclick=()=>{
         movieDiv.parentNode.removeChild(movieDiv);
+        genreMovieIDArray.pop(movieID);
     }
 
     displayMovieDiv.appendChild(movieNameDiv);
     displayMovieDiv.appendChild(deleteMovie);
+    displayMovieDiv.classList.add("tagContainer");
     movieDiv.appendChild(displayMovieDiv);
 
     let movieInput=document.createElement("input");
@@ -196,15 +212,19 @@ const addMovieToActor=(movieID)=>{
     let movieNameDiv=document.createElement("div");
     movieNameDiv.innerText=movieName;
     movieNameDiv.style.display="inline-block";
+    movieNameDiv.classList.add("nameTag");
 
     let deleteMovie=document.createElement("button");
     deleteMovie.innerText="X";
+    deleteMovie.classList.add("cancelTag");
     deleteMovie.onclick=()=>{
         movieDiv.parentNode.removeChild(movieDiv);
+        actorMovieIDArray.pop(movieID);
     }
 
     displayMovieDiv.appendChild(movieNameDiv);
     displayMovieDiv.appendChild(deleteMovie);
+    displayMovieDiv.classList.add("tagContainer");
     movieDiv.appendChild(displayMovieDiv);
 
     let movieInput=document.createElement("input");
@@ -234,15 +254,19 @@ const addMovieToDirector=(movieID)=>{
     let movieNameDiv=document.createElement("div");
     movieNameDiv.innerText=movieName;
     movieNameDiv.style.display="inline-block";
+    movieNameDiv.classList.add("nameTag");
 
     let deleteMovie=document.createElement("button");
     deleteMovie.innerText="X";
+    deleteMovie.classList.add("cancelTag");
     deleteMovie.onclick=()=>{
         movieDiv.parentNode.removeChild(movieDiv);
+        directorMovieIDArray.pop(movieID);
     }
 
     displayMovieDiv.appendChild(movieNameDiv);
     displayMovieDiv.appendChild(deleteMovie);
+    displayMovieDiv.classList.add("tagContainer");    
     movieDiv.appendChild(displayMovieDiv);
 
     let movieInput=document.createElement("input");
