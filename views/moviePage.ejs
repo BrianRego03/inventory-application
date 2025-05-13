@@ -34,7 +34,7 @@
     
                         <div>
                             <a class="movieLinks" href="/actors/<%= movie.directors[i].did %>">
-                                <div class="movieContainer" style="width: 100px;text-align: center;">
+                                <div class="movieContainer" style="width: 140px;text-align: center;">
                                     <img src=<%=movie.directors[i].durl %>>
                                     <div style="min-height: 50px;">
     
@@ -57,7 +57,7 @@
     
                         <div>
                             <a class="movieLinks" href="/actors/<%= movie.actors[i].aid %>">
-                                <div class="movieContainer" style="width: 100px;text-align: center;">
+                                <div class="movieContainer" style="width: 140px;text-align: center;">
                                     <img src=<%=movie.actors[i].aurl %>>
                                     <div style="min-height: 50px;">
     
@@ -74,6 +74,7 @@
     
             </div>
             <div>Genres:
+                <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
                 <% for(let i=0;i< movie.genres.length; i++){ %>
                     <div>
                         <a class="movieLinks" href="/genres/<%= movie.genres[i].gid %>">
@@ -87,6 +88,7 @@
                         </a>
                     </div>
                     <% } %>
+                    </div>
             </div>
             <div class="buttonHolder">
                 <button class="addMovieButton" type="button" onclick="displayForm()">Edit movie</button>

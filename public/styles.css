@@ -127,7 +127,13 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 80px;
+    min-height: 60px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
 }
 .movieContainer:hover{
     background-color:rgb(16, 46, 80);
