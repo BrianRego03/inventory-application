@@ -8,15 +8,33 @@
     <script src="/scripts.js" defer></script>
 </head>
 <body>
-    <h1>MovieDB</h1>
-    <h1>Genres</h1>
-    <button type="button" onclick="displayForm()">Add movie</button>
-    <button type="button" onclick="displayPersonForm()">Add actor/director</button>
+    <!-- <h1>MovieDB</h1>
+    <h1>Genres</h1> -->
+    <div class="headerContainer">
+        <div class="heading">
+            <h1>MovieDB</h1>
+        </div>
+        <div class="subHeader">
+            <a href="/">Movies</a>
+            <a href="/actors">Crew</a>
+    
+        </div>
+    </div>
+    <div >
+        <h1>Genres</h1>
+    </div>
+    <!-- <button type="button" onclick="displayForm()">Add movie</button>
+    <button type="button" onclick="displayPersonForm()">Add actor/director</button> -->
 
-    <button type="button" onclick="displayGenreForm()">Add genre</button>
+
 
     <%- include("genreDisplay",{genres:genres}) %>
     <%- include("createGenreForm",{movies:movies}) %>
+
+
+    <div class="buttonHolder">
+        <button class="addMovieButton" type="button" onclick="displayGenreForm()">Add genre</button>
+    </div>
 
   
 
