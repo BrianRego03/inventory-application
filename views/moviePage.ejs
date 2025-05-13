@@ -70,7 +70,17 @@
     </div>
     <div>Genres: 
         <% for(let i=0;i< movie.genres.length; i++){ %>
-            <a href="/genres/<%= movie.genres[i].gid %>"><%= movie.genres[i].gname %></a> <%= i< movie.genres.length-1?",":"" %>
+            <div>
+                <a class="movieLinks" href="/genres/<%= movie.genres[i].gid %>">
+                    <div class="movieContainer" style="width: 100px;text-align: center;">
+                        <div style="min-height: 50px;">
+
+                            <%= movie.genres[i].gname %>
+                        </div>
+
+                    </div>
+                </a>
+            </div>           
         <% } %>    
     </div>
     <div>
