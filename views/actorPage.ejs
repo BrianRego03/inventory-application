@@ -19,57 +19,75 @@
     
         </div>
     </div>
-    <img style="max-height: 200px;" src=<%= movies.actorurl %>>
-    <div><%= movies.actorname %></div>
-    <% if(movies.directormovies.length>0){ %>
-        <div>Director of:
-            <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
-                <% for(let i=0;i< movies.directormovies.length; i++){ %>
-                    <div style="width: 210px;text-align: center;">
-                        <div>
-                            <img style="max-height: 200px;" 
-                            src=<%= movies.directormovies[i].movie_url %>>
-                        </div>
-                        <a href="/movies/<%= movies.directormovies[i].movie_id %>">
-                            <%= movies.directormovies[i].movie_name %>
-                        </a>
-
-                    </div>
-
-
-                        <% } %>
-
+    <div class="movieStructure">
+        <div><img class="moviePoster" style="max-height: 400px;" src=<%=movies.actorurl %>></div>
+        <div class="movieData">
+            <div class="movieTitle">
+                <%= movies.actorname %>
             </div>
-
-
-        </div>
-    <% } %>
+            <% if(movies.directormovies.length>0){ %>
+                <div>Director of:
+                    <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                        <% for(let i=0;i< movies.directormovies.length; i++){ %>
     
-    <% if(movies.actormovies.length>0){ %>   
-        <div>Starred in: 
-            <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
-                <% for(let i=0;i< movies.actormovies.length; i++){ %>
-                    <div style="width: 210px;text-align: center;">
-                        <div>
-                            <img style="max-height: 200px;" src=<%=movies.actormovies[i].movie_url %>>
-                        </div>
-                        <a href="/movies/<%= movies.actormovies[i].movie_id %>">
-                            <%= movies.actormovies[i].movie_name %>
-                        </a>
+                            <div style="width: 210px;text-align: center;">
+    
+                                <a class="movieLinks" href="/movies/<%= movies.directormovies[i].movie_id %>">
+                                    <div class="movieContainer" style="width: 100px;text-align: center;">
+                                        <img style="max-height: 200px;" src=<%=movies.directormovies[i].movie_url %>>
+                                        <div style="min-height: 50px;">
+    
+                                            <%= movies.directormovies[i].movie_name %>
+                                        </div>
+    
+                                    </div>
+                                </a>
+                            </div>
+    
+    
+                            <% } %>
+    
                     </div>
+    
+    
+                </div>
                 <% } %>
-                    
-
-            </div>
-
- 
+    
+                    <% if(movies.actormovies.length>0){ %>
+                        <div>Starred in:
+                            <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                                <% for(let i=0;i< movies.actormovies.length; i++){ %>
+                                    <div style="width: 210px;text-align: center;">
+    
+                                        <a class="movieLinks" href="/movies/<%= movies.actormovies[i].movie_id %>">
+                                            <div class="movieContainer" style="width: 100px;text-align: center;">
+                                                <img style="max-height: 200px;" src=<%=movies.actormovies[i].movie_url %>>
+                                                <div style="min-height: 50px;">
+    
+                                                    <%= movies.actormovies[i].movie_name %>
+                                                </div>
+    
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+    
+    
+                            </div>
+    
+    
+                        </div>
+                        <% } %>
+                            <div class="buttonHolder">
+                                <button class="addMovieButton" type="button" onclick="displayPersonForm()">Edit
+                                    person</button>
+    
+                                <button class="addMovieButton" onclick="displayDeleteMovie()">Delete person</button>
+                            </div>
         </div>
-    <% } %>
-    <div class="buttonHolder">
-        <button class="addMovieButton" type="button" onclick="displayPersonForm()">Edit person</button>
+    </div>
 
-        <button class="addMovieButton" onclick="displayDeleteMovie()">Delete person</button>
-    </div> 
+
 
     <%- include("editPersonForm",{movies:movies,allMovies:allMovies}) %>
     <%- include("deleteVerify",{id:movies.id,type:'actors'}) %>
