@@ -1,13 +1,17 @@
 <div style="display: flex; justify-content: space-evenly;flex-wrap: wrap;">
     <% for(i=0;i< people.length;i++){ %>
-        <div style="width: 210px;text-align: center;">
-            <img style="max-height: 200px;" src=<%= people[i].url %>>
-            <div>
-                <a href="/actors/<%= people[i].id %>">
-                    <%= people[i].name %>
-                </a>
-            </div>
-            
+
+        <div>
+            <a class="movieLinks" href="/actors/<%= people[i].id %>">
+                <div class="movieContainer" style="width: 205px;text-align: center;">
+                    <img src=<%= people[i].url %>>
+                    <div>
+
+                        <%= people[i].name %>
+                    </div>
+
+                </div>
+            </a>
         </div>
     <% } %>  
 
