@@ -83,9 +83,10 @@
             </div>           
         <% } %>    
     </div>
-    <div>
-        <button type="button" onclick="displayForm()">Edit movie</button>
-        <button onclick="displayDeleteMovie()">Delete movie</button>
+    <div class="buttonHolder">
+        <button class="addMovieButton" type="button" onclick="displayForm()">Edit movie</button>
+        <button class="addMovieButton" type="button" onclick="displayDeleteMovie()">Delete movie</button>
+
     </div>
     <%- include("editMovie",{movie:movie,people:people,genres:genres}) %>
     <%- include("deleteVerify",{id:movie.id,type:'movies'}) %>

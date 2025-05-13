@@ -84,6 +84,7 @@ a{
     border: 10px solid rgb(16, 46, 80);
     border-radius: 10px;
     padding: 10px;
+    margin: 10px;
 }
 .addMovieButton:hover{
     background-color: #BE3D2A;
