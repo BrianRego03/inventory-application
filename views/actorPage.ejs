@@ -8,6 +8,17 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
+    <div class="headerContainer">
+        <div class="heading">
+            <h1>MovieDB</h1>
+        </div>
+        <div class="subHeader">
+            <a href="/">Movies</a>
+            <a href="/genres">Genres</a>
+            <a href="/actors">Crew</a>
+    
+        </div>
+    </div>
     <img style="max-height: 200px;" src=<%= movies.actorurl %>>
     <div><%= movies.actorname %></div>
     <% if(movies.directormovies.length>0){ %>
