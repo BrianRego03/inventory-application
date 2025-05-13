@@ -49,13 +49,18 @@
     <div>Starring: 
         <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
             <% for(let i=0;i< movie.actors.length; i++){ %>
-                <div style="width: 210px;text-align: center;">
-                    <div><img style="max-height: 200px;" src=<%= movie.actors[i].aurl %>></div>
-    
-                    <a href="/actors/<%= movie.actors[i].aid %>">
-                        <%= movie.actors[i].aname %>
-                    </a> 
-    
+
+                <div>
+                    <a class="movieLinks" href="/actors/<%= movie.actors[i].aid %>">
+                        <div class="movieContainer" style="width: 100px;text-align: center;">
+                            <img src=<%= movie.actors[i].aurl %>>
+                            <div style="min-height: 50px;">
+
+                                <%= movie.actors[i].aname %>
+                            </div>
+
+                        </div>
+                    </a>
                 </div>
     
             <% } %>  
