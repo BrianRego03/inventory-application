@@ -27,11 +27,12 @@
             <div id="selectedGenreMovie">
                 <% for(let i=0;i< movies.genremovies.length; i++){ %>
                     <div>
-                        <div>
-                            <div style="display: inline-block;">
+                        <div class="tagContainer">
+                            <div class="nameTag" style="display: inline-block;">
                                 <%= movies.genremovies[i].movie_name %>
                             </div>
-                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                            <button class="cancelTag" 
+                            onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
                         <input type="hidden" value="<%= movies.genremovies[i].movie_id %>" 
                         name="genreMovie[]">

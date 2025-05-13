@@ -270,6 +270,7 @@ form legend{
     justify-content: flex-start;
     align-items: center;
     margin-right: 4px;
+    font-size: 12px;
 }
 .deleteContainer{
     flex-direction: row;

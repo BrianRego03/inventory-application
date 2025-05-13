@@ -37,9 +37,10 @@
             <div id="selectedDirector">
                 <% for(let i=0;i< movie.directors.length; i++){ %>
                 <div>
-                    <div>
-                        <div style="display: inline-block;"><%= movie.directors[i].dname %></div>
-                        <button onclick="this.closest('div').parentNode.remove()">X</button>
+                    <div class="tagContainer">
+                        <div class="nameTag" style="display: inline-block;"><%= movie.directors[i].dname %></div>
+                        <button class="cancelTag"
+                         onclick="this.closest('div').parentNode.remove()">X</button>
                     </div>
                     <input type="hidden" value="<%= movie.directors[i].did %>" 
                     name="movieDirector[]">
@@ -60,11 +61,12 @@
             <div id="selectedActor">
                 <% for(let i=0;i< movie.actors.length; i++){ %>
                     <div>
-                        <div>
-                            <div style="display: inline-block;">
+                        <div class="tagContainer">
+                            <div class="nameTag"  style="display: inline-block;">
                                 <%= movie.actors[i].aname %>
                             </div>
-                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                            <button class="cancelTag" 
+                            onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
                         <input type="hidden" 
                         value="<%= movie.actors[i].aid %>" name="movieActor[]">
@@ -85,11 +87,12 @@
             <div id="selectedGenre">
                <% for(let i=0;i< movie.genres.length; i++){ %>
                     <div>
-                        <div>
-                            <div style="display: inline-block;">
+                        <div class="tagContainer">
+                            <div class="nameTag" style="display: inline-block;">
                                 <%= movie.genres[i].gname %>
                             </div>
-                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                            <button  class="cancelTag"
+                             onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
                         <input type="hidden" 
                         value="<%= movie.genres[i].gid %>" name="movieGenre[]">

@@ -33,11 +33,12 @@
             <div id="selectedActorMovie">
                 <% for(let i=0;i< movies.actormovies.length; i++){ %>
                     <div>
-                        <div>
-                            <div style="display: inline-block;">
+                        <div class="tagContainer">
+                            <div class="nameTag" style="display: inline-block;">
                                 <%= movies.actormovies[i].movie_name %>
                             </div>
-                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                            <button class="cancelTag"
+                             onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
                         <input type="hidden" value="<%= movies.actormovies[i].movie_id %>" 
                         name="actorMovie[]">
@@ -59,11 +60,12 @@
             <div id="selectedDirectorMovie">
                 <% for(let i=0;i< movies.directormovies.length; i++){ %>
                     <div>
-                        <div>
-                            <div style="display: inline-block;">
+                        <div class="tagContainer">
+                            <div class="nameTag" style="display: inline-block;">
                                 <%= movies.directormovies[i].movie_name %>
                             </div>
-                            <button onclick="this.closest('div').parentNode.remove()">X</button>
+                            <button class="cancelTag" 
+                            onclick="this.closest('div').parentNode.remove()">X</button>
                         </div>
                         <input type="hidden" value="<%= movies.directormovies[i].movie_id %>" 
                         name="directorMovie[]">
