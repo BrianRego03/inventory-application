@@ -9,14 +9,19 @@
 </head>
 <body>
     <h1>MovieDB</h1>
-    <h1>Crew</h1>
-    <button type="button" onclick="displayForm()">Add movie</button>
-    <button type="button" onclick="displayPersonForm()">Add actor/director</button>
+    <h1 style="text-align: center;">Crew</h1>
+    <!-- <button type="button" onclick="displayForm()">Add movie</button> -->
+    <!-- <button type="button" onclick="displayPersonForm()">Add actor/director</button> -->
 
-    <button type="button" onclick="displayGenreForm()">Add genre</button>
+    <!-- <button type="button" onclick="displayGenreForm()">Add genre</button> -->
 
     <%- include("personDisplay",{people:people}) %>
     <%- include("createPersonForm",{movies:movies}) %>
+
+    <div class="buttonHolder">
+        <button class="addMovieButton" type="button" 
+        onclick="displayPersonForm()">Add actor/director</button>
+    </div>
 
   
 
