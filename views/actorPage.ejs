@@ -65,11 +65,12 @@
  
         </div>
     <% } %>
-    <div>
-        <button type="button" onclick="displayPersonForm()">Edit person</button>
+    <div class="buttonHolder">
+        <button class="addMovieButton" type="button" onclick="displayPersonForm()">Edit person</button>
 
-        <button onclick="displayDeleteMovie()">Delete person</button>
-    </div>   
+        <button class="addMovieButton" onclick="displayDeleteMovie()">Delete person</button>
+    </div> 
+
     <%- include("editPersonForm",{movies:movies,allMovies:allMovies}) %>
     <%- include("deleteVerify",{id:movies.id,type:'actors'}) %>
 
