@@ -20,74 +20,83 @@
     
         </div>
     </div>
-    <img style="max-height: 200px;" src=<%= movie.url %>>
-    <div><%= movie.moviename %></div>
-    <div>Release Year: <%= movie.year %></div>
-    <div>Directed by: 
-        <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
-            <% for(let i=0;i< movie.directors.length; i++){ %>
-
-                <div>
-                    <a class="movieLinks" href="/actors/<%= movie.directors[i].did %>">
-                        <div class="movieContainer" style="width: 100px;text-align: center;">
-                            <img src=<%= movie.directors[i].durl %>>
-                            <div style="min-height: 50px;">
-
-                                <%= movie.directors[i].dname %>
-                            </div>
-
+    <div class="movieStructure">
+        <div ><img class="moviePoster" style="max-height: 400px;" src=<%=movie.url %>></div>
+        <div class="movieData">
+            <div class="movieTitle">
+                <%= movie.moviename %>
+            </div>
+            <div>Release Year: <%= movie.year %>
+            </div>
+            <div>Directed by:
+                <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                    <% for(let i=0;i< movie.directors.length; i++){ %>
+    
+                        <div>
+                            <a class="movieLinks" href="/actors/<%= movie.directors[i].did %>">
+                                <div class="movieContainer" style="width: 100px;text-align: center;">
+                                    <img src=<%=movie.directors[i].durl %>>
+                                    <div style="min-height: 50px;">
+    
+                                        <%= movie.directors[i].dname %>
+                                    </div>
+    
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-
-
-            <% } %>    
-        </div>
-
-
-    </div>
-    <div>Starring: 
-        <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
-            <% for(let i=0;i< movie.actors.length; i++){ %>
-
-                <div>
-                    <a class="movieLinks" href="/actors/<%= movie.actors[i].aid %>">
-                        <div class="movieContainer" style="width: 100px;text-align: center;">
-                            <img src=<%= movie.actors[i].aurl %>>
-                            <div style="min-height: 50px;">
-
-                                <%= movie.actors[i].aname %>
-                            </div>
-
-                        </div>
-                    </a>
+    
+    
+                        <% } %>
                 </div>
     
-            <% } %>  
-
-        </div>
-  
-    </div>
-    <div>Genres: 
-        <% for(let i=0;i< movie.genres.length; i++){ %>
-            <div>
-                <a class="movieLinks" href="/genres/<%= movie.genres[i].gid %>">
-                    <div class="movieContainer" style="width: 100px;text-align: center;">
-                        <div style="min-height: 50px;">
-
-                            <%= movie.genres[i].gname %>
+    
+            </div>
+            <div>Starring:
+                <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
+                    <% for(let i=0;i< movie.actors.length; i++){ %>
+    
+                        <div>
+                            <a class="movieLinks" href="/actors/<%= movie.actors[i].aid %>">
+                                <div class="movieContainer" style="width: 100px;text-align: center;">
+                                    <img src=<%=movie.actors[i].aurl %>>
+                                    <div style="min-height: 50px;">
+    
+                                        <%= movie.actors[i].aname %>
+                                    </div>
+    
+                                </div>
+                            </a>
                         </div>
-
+    
+                        <% } %>
+    
+                </div>
+    
+            </div>
+            <div>Genres:
+                <% for(let i=0;i< movie.genres.length; i++){ %>
+                    <div>
+                        <a class="movieLinks" href="/genres/<%= movie.genres[i].gid %>">
+                            <div class="movieContainer" style="width: 100px;text-align: center;">
+                                <div style="min-height: 50px;">
+    
+                                    <%= movie.genres[i].gname %>
+                                </div>
+    
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>           
-        <% } %>    
+                    <% } %>
+            </div>
+            <div class="buttonHolder">
+                <button class="addMovieButton" type="button" onclick="displayForm()">Edit movie</button>
+                <button class="addMovieButton" type="button" onclick="displayDeleteMovie()">Delete movie</button>
+    
+            </div>
+        </div>
     </div>
-    <div class="buttonHolder">
-        <button class="addMovieButton" type="button" onclick="displayForm()">Edit movie</button>
-        <button class="addMovieButton" type="button" onclick="displayDeleteMovie()">Delete movie</button>
+    
 
-    </div>
     <%- include("editMovie",{movie:movie,people:people,genres:genres}) %>
     <%- include("deleteVerify",{id:movie.id,type:'movies'}) %>
 
