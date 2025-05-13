@@ -112,7 +112,9 @@ a{
 .buttonHolder{
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 30px;
+    flex-direction: row;
+    align-items: center;
 }
 
 .movieLinks{
@@ -153,12 +155,14 @@ form legend{
 }
 
 .submitButton,.cancelForm{
-    width: 45%;
-    height: 50px;
+    width: 40%;
+    height: 60px;
     border:4px solid #BE3D2A;
     border-radius: 4px;
     background-color: #E78B48;
     color: rgb(16, 46, 80);
+    margin-right: 10px;
+    margin-left: 10px;
 }
 .submitButton:hover,.cancelForm:hover{
     background-color: #BE3D2A;
@@ -286,8 +290,10 @@ form legend{
 }
 
 .movieTitle{
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
+    color: #202d3a;
+
 }
 .moviePoster{
     border: 8px solid #7F8C8D;
