@@ -26,16 +26,21 @@
     <div>Directed by: 
         <div style="display: flex;justify-content: flex-start; flex-wrap: wrap;">
             <% for(let i=0;i< movie.directors.length; i++){ %>
-                <div style="width: 210px;text-align: center;">
-                    <div><img style="max-height: 200px;" src=<%= movie.directors[i].durl %>></div>
-                    <a href="/actors/<%= movie.directors[i].did %>">
-                        <%= movie.directors[i].dname %>
-                    </a> 
 
+                <div>
+                    <a class="movieLinks" href="/actors/<%= movie.directors[i].did %>">
+                        <div class="movieContainer" style="width: 100px;text-align: center;">
+                            <img src=<%= movie.directors[i].durl %>>
+                            <div style="min-height: 50px;">
+
+                                <%= movie.directors[i].dname %>
+                            </div>
+
+                        </div>
+                    </a>
                 </div>
 
 
-                <%= i< movie.directors.length-1?",":"" %>
             <% } %>    
         </div>
 
